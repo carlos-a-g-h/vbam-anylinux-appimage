@@ -24,7 +24,8 @@ xorg-server
 
 # echo "Installing debloated packages..."
 # echo "---------------------------------------------------------------"
-# get-debloated-pkgs --add-common --prefer-nano
+
+# ./get-debloated-pkgs.sh mesa-mini gdk-pixbuf2-mini gtk3-mini librsvg-mini ffmpeg-mini
 
 # Comment this out if you need an AUR package
 #make-aur-package PACKAGENAME
