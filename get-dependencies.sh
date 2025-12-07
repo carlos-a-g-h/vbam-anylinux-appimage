@@ -16,16 +16,17 @@ wget "$URL_SCRIPT2"
 
 chmod +x *.sh
 
+echo "→ Installing some packages..."
+
 pacman -Syy --noconfirm sudo \
 cmake make gcc clang ninja base-devel \
-glew glu mesa wxwidgets-common gtk3 wxwidgets-gtk3 ffmpeg pulseaudio sdl2-compat \
+glew glu mesa wxwidgets-common wxwidgets-gtk3 pulseaudio sdl2-compat \
 zsync zstd \
 xorg-server
 
-# echo "Installing debloated packages..."
-# echo "---------------------------------------------------------------"
+echo "→ Installing debloated packages..."
 
-# ./get-debloated-pkgs.sh mesa-mini gdk-pixbuf2-mini gtk3-mini librsvg-mini ffmpeg-mini
+./get-debloated-pkgs.sh mesa-mini gdk-pixbuf2-mini gtk3-mini librsvg-mini ffmpeg-mini
 
 # Comment this out if you need an AUR package
 #make-aur-package PACKAGENAME
