@@ -15,13 +15,13 @@ mv -v "$PATH_SOURCECODE_DECOMP" "$PATH_SOURCECODE"
 
 # → Install some packages beforehand (I do not trust the installdeps script)
 
-pacman -Syy --noconfirm \
-cmake make gcc clang ninja base-devel \
-glew glu mesa wxwidgets-common gtk3 wxwidgets-gtk3 ffmpeg pulseaudio sdl2-compat sdl3 \
-zsync zstd \
-xorg-server
+# pacman -Syy --noconfirm \
+# cmake make gcc clang ninja base-devel \
+# glew glu mesa wxwidgets-common gtk3 wxwidgets-gtk3 ffmpeg pulseaudio sdl2-compat sdl3 \
+# zsync zstd \
+# xorg-server
 
-# → Run the installdeps script...?
+echo "→ Run the installdeps script inside the repo"
 
 chmod +x "$PATH_SOURCECODE"/installdeps && "$PATH_SOURCECODE"/installdeps
 
