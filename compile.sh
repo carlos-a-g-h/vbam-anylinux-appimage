@@ -8,8 +8,11 @@ PATH_SOURCECODE="visualboyadvance-m.source"
 
 # → Download source code and rename directory
 
+PATH_SOURCECODE_DECOMP=$(tar --exclude="*/*" -tzf "$TARFILE")
+
+
 tar -xvf "$TARFILE"
-mv -v visualboyadvance-m "$PATH_SOURCECODE"
+mv -v "$(PATH_SOURCECODE_DECOMP)" "$PATH_SOURCECODE"
 
 # → Install some packages beforehand (I do not trust the installdeps script)
 
