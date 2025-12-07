@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=VisualBoyAdvance-M (GUI)
+Name=VisualBoyAdvance-M
 Comment=Nintendo Game Boy Advance Emulator
 Comment[es]=Emulador de Nintendo Game Boy Advance
 Exec=visualboyadvance-m %f
