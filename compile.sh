@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu
+set -eux
 
 VERSION="$(cat ./version)"
 TARFILE="$VERSION.tar.gz"
@@ -8,11 +8,10 @@ PATH_SOURCECODE="visualboyadvance-m.source"
 
 # → Download source code and rename directory
 
-PATH_SOURCECODE_DECOMP=$(tar --exclude="*/*" -tzf "$TARFILE")
+PATH_SOURCECODE_DECOMP=$(tar -tzf "$TARFILE"|head -n1)
 
-
-tar -xvf "$TARFILE"
-mv -v "$(PATH_SOURCECODE_DECOMP)" "$PATH_SOURCECODE"
+tar -xf "$TARFILE"
+mv -v "$PATH_SOURCECODE_DECOMP" "$PATH_SOURCECODE"
 
 # → Install some packages beforehand (I do not trust the installdeps script)
 
