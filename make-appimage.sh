@@ -2,6 +2,9 @@
 
 set -eu
 
+GH_SHA="$1"
+GH_SHA_SHORT="${GH_SHA:0:8}"
+
 ARCH=$(uname -m)
 VERSION=$(cat ./version)
 NAME="VisualBoyAdvance-M"
@@ -14,7 +17,7 @@ export ARCH VERSION
 # export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
 export ICON=$(realpath -e "$PATH_SOURCECODE"/src/wx/icons/sizes/256x256/apps/visualboyadvance-m.png)
 export DESKTOP=$(realpath -e visualboyadvance-m.desktop)
-export OUTNAME="$NAME"_"$VERSION"_anylinux_"$ARCH".AppImage
+export OUTNAME="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_anylinux_"$ARCH".AppImage
 export OUTPATH=./dist
 
 export DEPLOY_OPENGL=1
@@ -27,7 +30,9 @@ export DEPLOY_SDL=1
 export DEPLOY_GLYCIN=0
 
 # Creating Appdir beforehand
-#mkdir -vp AppDir/bin
+mkdir -p AppDir/
+echo "$GH_SHA" > AppDir/commit_id.txt
+
 #mkdir -vp AppDir/usr/bin
 #mkdir -vp AppDir/shared/bin
 #cp -va "$PATH_ALL_ICONS"/* AppDir/usr/share/icons/scalable/
