@@ -3,14 +3,28 @@
 set -eu
 
 ARCH=$(uname -m)
+VERSION=$(cat ./version)
+TARFILE="$VERSION.tar.gz"
 
-echo "Installing package dependencies..."
-echo "---------------------------------------------------------------"
-# pacman -Syu --noconfirm PACKAGESHERE
+URL_SRC="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/refs/tags/$TARFILE"
+URL_SCRIPT1="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
+URL_SCRIPT2="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 
-echo "Installing debloated packages..."
-echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+wget "$URL_SRC"
+wget "$URL_SCRIPT1"
+wget "$URL_SCRIPT2"
+
+chmod +x *.sh
+
+pacman -Syy --noconfirm sudo \
+cmake make gcc clang ninja base-devel \
+glew glu mesa wxwidgets-common gtk3 wxwidgets-gtk3 ffmpeg pulseaudio sdl2-compat \
+zsync zstd \
+xorg-server
+
+# echo "Installing debloated packages..."
+# echo "---------------------------------------------------------------"
+# get-debloated-pkgs --add-common --prefer-nano
 
 # Comment this out if you need an AUR package
 #make-aur-package PACKAGENAME
