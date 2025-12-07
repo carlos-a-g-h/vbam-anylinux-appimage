@@ -28,7 +28,7 @@ chmod +x "$PATH_SOURCECODE"/installdeps && "$PATH_SOURCECODE"/installdeps
 # → Run cmake
 
 cmake ./"$PATH_SOURCECODE"/ \
-	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_BUILD_TYPE=Debug \
 	-DENABLE_SDL=ON \
 	-DENABLE_LTO=ON \
 	-DENABLE_ONLINEUPDATES=OFF \
