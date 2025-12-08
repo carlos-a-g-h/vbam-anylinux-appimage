@@ -10,23 +10,44 @@ URL_SRC="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/refs/t
 URL_SCRIPT1="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
 URL_SCRIPT2="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 
+################################################################################
+echo "→ Downloading everything"
+
 wget "$URL_SRC"
 wget "$URL_SCRIPT1"
 wget "$URL_SCRIPT2"
 
 chmod +x *.sh
+ls -l *.sh
 
-echo "→ Installing some packages..."
+################################################################################
+echo "→ Decompressing $TARFILE"
 
-pacman -Syy --noconfirm sudo \
+PATH_SOURCECODE="visualboyadvance-m.source"
+PATH_SOURCECODE_DECOMP=$(tar -tzf "$TARFILE"|head -n1)
+
+ls -l "$TARFILE"
+tar -xf "$TARFILE"
+mv -v "$PATH_SOURCECODE_DECOMP" "$PATH_SOURCECODE"
+
+################################################################################
+echo "→ Installing the 'RECOMMENDED' packages..."
+
+REC_PKGS="$PATH_SOURCECODE"/installdeps
+ls -l "$REC_PKGS"
+chmod +x ./"$REC_PKGS"
+./"$REC_PKGS"
+
+# pacman -Syy --noconfirm sudo \
 cmake make gcc clang ninja base-devel \
 glew glu mesa wxwidgets-common wxwidgets-gtk3 pulseaudio sdl2-compat \
 zsync zstd \
 xorg-server
 
-echo "→ Installing debloated packages..."
+################################################################################
+#echo "→ Installing debloated packages..."
 
-./get-debloated-pkgs.sh mesa-mini gdk-pixbuf2-mini gtk3-mini librsvg-mini ffmpeg-mini
+#./get-debloated-pkgs.sh mesa-mini gdk-pixbuf2-mini gtk3-mini librsvg-mini ffmpeg-mini
 
 # Comment this out if you need an AUR package
 #make-aur-package PACKAGENAME
