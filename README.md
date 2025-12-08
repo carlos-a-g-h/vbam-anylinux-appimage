@@ -1,3 +1,5 @@
+# WORK IN PROGRESS, DO NOT DOWNLOAD ANY OF THE BINARIES AND RUN THEM UNLESS YOU KNOW WHAT YOU'RE DOING
+
 # TEMPLATE-AppImage 🐧
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/pkgforge-dev/TEMPLATE-AppImage/total?logo=github&label=GitHub%20Downloads)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
