@@ -38,11 +38,9 @@ ls -l "$REC_PKGS"
 chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
-# pacman -Syy --noconfirm sudo \
-# cmake make gcc clang ninja base-devel \
-# glew glu mesa wxwidgets-common wxwidgets-gtk3 pulseaudio sdl2-compat \
-# zsync zstd \
-# xorg-server
+# Providing SDL2
+# https://github.com/carlos-a-g-h/vbam-anylinux-appimage/actions/runs/20032167816/job/57443909647#step:6:65
+pacman -Syy --noconfirm sdl2-compat
 
 ################################################################################
 #echo "→ Installing debloated packages..."
