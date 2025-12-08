@@ -39,10 +39,10 @@ chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
 # pacman -Syy --noconfirm sudo \
-cmake make gcc clang ninja base-devel \
-glew glu mesa wxwidgets-common wxwidgets-gtk3 pulseaudio sdl2-compat \
-zsync zstd \
-xorg-server
+# cmake make gcc clang ninja base-devel \
+# glew glu mesa wxwidgets-common wxwidgets-gtk3 pulseaudio sdl2-compat \
+# zsync zstd \
+# xorg-server
 
 ################################################################################
 #echo "→ Installing debloated packages..."

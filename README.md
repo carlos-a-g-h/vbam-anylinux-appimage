@@ -1,11 +1,11 @@
-# WORK IN PROGRESS, DO NOT DOWNLOAD ANY OF THE BINARIES AND RUN THEM UNLESS YOU KNOW WHAT YOU'RE DOING
+# VisualBoyAdvance-M Anylinux AppImage 🐧
 
-# TEMPLATE-AppImage 🐧
+## THIS IS A WORK IN PROGRESS, DO NOT DOWNLOAD ANY OF THE BINARIES AND RUN THEM UNLESS YOU KNOW WHAT YOU'RE DOING
 
-[![GitHub Downloads](https://img.shields.io/github/downloads/pkgforge-dev/TEMPLATE-AppImage/total?logo=github&label=GitHub%20Downloads)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
-[![CI Build Status](https://github.com//pkgforge-dev/TEMPLATE-AppImage/actions/workflows/appimage.yml/badge.svg)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
+[![GitHub Downloads](https://img.shields.io/github/downloads/carlos-a-g-h/vbam-anylinux-appimage/total?logo=github&label=GitHub%20Downloads)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
+[![CI Build Status](https://github.com//carlos-a-g-h/vbam-anylinux-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
-* [Latest Stable Release](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
+* [Latest Stable Release](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
 ---
 
@@ -24,5 +24,3 @@ More at: [AnyLinux-AppImages](https://pkgforge-dev.github.io/Anylinux-AppImages/
 </details>
 
 ---
-
-# Fork this repository to quickly make an AppImage using the [Anylinux-AppImages](https://github.com/pkgforge-dev/Anylinux-AppImages) tools
