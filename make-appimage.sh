@@ -30,9 +30,10 @@ export DEPLOY_SDL=1
 export DEPLOY_GLYCIN=0
 export DEPLOY_LOCALES=1
 
-# Creating Appdir beforehand
-mkdir -p AppDir/
-echo "$GH_SHA" > AppDir/commit_id.txt
+# Copy the full github SHA
+
+mkdir -vp AppDir/details
+echo "$GH_SHA" > AppDir/details/commit.txt
 
 #mkdir -vp AppDir/usr/bin
 #mkdir -vp AppDir/shared/bin

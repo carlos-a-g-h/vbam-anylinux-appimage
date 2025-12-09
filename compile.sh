@@ -29,8 +29,17 @@ cmake ./"$PATH_SOURCECODE"/ \
 
 ninja
 
+find
+
+# → check existance of binaries
+
 ls -l visualboyadvance-m
 ldd visualboyadvance-m
 
 ls -l vbam
 ldd vbam
+
+# → copy cmake cache file to the details directory
+
+mkdir -vp AppDir/details
+cp -v CMakeCache.txt AppDir/details/

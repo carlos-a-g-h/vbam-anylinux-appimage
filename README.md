@@ -2,6 +2,8 @@
 
 ## THIS IS A WORK IN PROGRESS, DO NOT DOWNLOAD ANY OF THE BINARIES AND RUN THEM UNLESS YOU KNOW WHAT YOU'RE DOING
 
+NOTE: I am aware that there are built binaries out there but they (probably) lack the features I want on this emulator and that is why I'm building it from source
+
 [![GitHub Downloads](https://img.shields.io/github/downloads/carlos-a-g-h/vbam-anylinux-appimage/total?logo=github&label=GitHub%20Downloads)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 [![CI Build Status](https://github.com//carlos-a-g-h/vbam-anylinux-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
