@@ -25,9 +25,10 @@ export DEPLOY_PULSE=1
 export DEPLOY_PIPEWIRE=1
 export DEPLOY_VULKAN=0
 export DEPLOY_GTK=1
-export DEPLOY_GDK=1
+export DEPLOY_GDK=0
 export DEPLOY_SDL=1
 export DEPLOY_GLYCIN=0
+export DEPLOY_LOCALES=1
 
 # Creating Appdir beforehand
 mkdir -p AppDir/
@@ -36,6 +37,10 @@ echo "$GH_SHA" > AppDir/commit_id.txt
 #mkdir -vp AppDir/usr/bin
 #mkdir -vp AppDir/shared/bin
 #cp -va "$PATH_ALL_ICONS"/* AppDir/usr/share/icons/scalable/
+
+# Copy the missing libwx files, including localization files
+# mkdir -vp AppDir/share/aclocal
+# cp -v /usr/share/aclocal/wxwin.m4 AppDir/share/aclocal/
 
 # Deploy dependencies
 ./quick-sharun.sh ./vbam ./visualboyadvance-m /usr/lib/libwx_gtk3u_xrc-3.2.*

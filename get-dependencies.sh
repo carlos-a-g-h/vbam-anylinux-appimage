@@ -38,16 +38,21 @@ ls -l "$REC_PKGS"
 chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
-# Providing SDL2
+# Providing SDL2 through sdl2-compat
 # https://github.com/carlos-a-g-h/vbam-anylinux-appimage/actions/runs/20032167816/job/57443909647#step:6:65
 pacman -Syy --noconfirm sdl2-compat
 
 ################################################################################
 #echo "→ Installing debloated packages..."
 
-#./get-debloated-pkgs.sh mesa-mini gdk-pixbuf2-mini gtk3-mini librsvg-mini ffmpeg-mini
+./get-debloated-pkgs.sh --add-opengl gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
+
+################################################################################
 
 # Comment this out if you need an AUR package
 #make-aur-package PACKAGENAME
 
-# If the application needs to be manually built that has to be done down here
+################################################################################
+
+# NOTES:
+# The installdeps script does not provide all of the necessary dependencies for building from source on arch
