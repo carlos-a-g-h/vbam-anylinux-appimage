@@ -20,6 +20,7 @@ export DESKTOP=$(realpath -e visualboyadvance-m.desktop)
 export OUTNAME="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_anylinux_"$ARCH".AppImage
 export OUTPATH=./dist
 
+export NO_STRIP=1
 export DEPLOY_OPENGL=1
 export DEPLOY_PULSE=1
 export DEPLOY_PIPEWIRE=1
