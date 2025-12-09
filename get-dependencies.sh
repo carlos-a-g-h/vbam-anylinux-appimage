@@ -40,7 +40,7 @@ chmod +x ./"$REC_PKGS"
 
 # Providing SDL2 through sdl2-compat
 # https://github.com/carlos-a-g-h/vbam-anylinux-appimage/actions/runs/20032167816/job/57443909647#step:6:65
-pacman -Syy --noconfirm sdl2-compat wxwidgets-common wxwidgets-gtk3 
+pacman -Syy --noconfirm sdl2-compat wxwidgets-common wxwidgets-gtk3 glew glu
 
 ################################################################################
 #echo "→ Installing debloated packages..."
