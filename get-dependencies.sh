@@ -38,14 +38,12 @@ ls -l "$REC_PKGS"
 chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
-# Providing SDL2 through sdl2-compat
-# https://github.com/carlos-a-g-h/vbam-anylinux-appimage/actions/runs/20032167816/job/57443909647#step:6:65
-pacman -Syy --noconfirm sdl2-compat wxwidgets-common wxwidgets-gtk3 glew glu
+pacman -Syu --noconfirm base-devel sdl2-compat wxwidgets-common wxwidgets-gtk3 glew glu gegl systemd-libs
 
 ################################################################################
-#echo "→ Installing debloated packages..."
+echo "→ Installing debloated packages..."
 
-./get-debloated-pkgs.sh --add-opengl gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
+./get-debloated-pkgs.sh --add-opengl --add-common mesa-mini gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
 
 ################################################################################
 
