@@ -38,7 +38,7 @@ ls -l "$REC_PKGS"
 chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
-pacman -Syu --noconfirm base-devel sdl2-compat wxwidgets-common wxwidgets-gtk3 glew glu gegl systemd-libs
+pacman -Syu --noconfirm base-devel sdl12-compat wxwidgets-common wxwidgets-gtk3 glew glu gegl systemd-libs
 
 ################################################################################
 echo "→ Installing debloated packages..."
