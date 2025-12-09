@@ -22,6 +22,7 @@ export OUTPATH=./dist
 
 export NO_STRIP=1
 export DEPLOY_OPENGL=1
+export DEPLOY_GEGL=1
 export DEPLOY_PULSE=1
 export DEPLOY_PIPEWIRE=1
 export DEPLOY_VULKAN=0
