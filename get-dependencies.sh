@@ -38,12 +38,34 @@ ls -l "$REC_PKGS"
 chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
-pacman -Syu --noconfirm base-devel sdl12-compat wxwidgets-common wxwidgets-gtk3 glew glu gegl systemd-libs
+pacman -Syu --noconfirm \
+	base-devel sdl12-compat wxwidgets-common wxwidgets-gtk3 \
+	mesa-utils glew glu gegl \
+	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
+	systemd-libs
+
+# From the GLXGears example
+#pacman -Syu --noconfirm \
+#	base-devel       \
+#	curl             \
+#	git              \
+#	libxcb           \
+#	libxcursor       \
+#	libxi            \
+#	libxkbcommon     \
+#	libxkbcommon-x11 \
+#	libxrandr        \
+#	libxtst          \
+#	mesa-utils       \
+#	vulkan-tools     \
+#	wget             \
+#	xorg-server-xvfb \
+#	zsync
 
 ################################################################################
 echo "→ Installing debloated packages..."
 
-./get-debloated-pkgs.sh --add-opengl --add-common mesa-mini gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
+./get-debloated-pkgs.sh --add-opengl --add-common --add-mesa --prefer-nano gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
 
 ################################################################################
 

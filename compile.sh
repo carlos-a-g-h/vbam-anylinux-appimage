@@ -19,7 +19,7 @@ PATH_SOURCECODE="visualboyadvance-m.source"
 cmake ./"$PATH_SOURCECODE"/ \
 	-DCMAKE_BUILD_TYPE=Debug \
 	-DENABLE_SDL=ON \
-	-DENABLE_LTO=ON \
+	-DENABLE_LTO=OFF \
 	-DENABLE_ONLINEUPDATES=OFF \
 	-DENABLE_LINK=ON \
 	-DENABLE_FFMPEG=ON \
@@ -43,3 +43,4 @@ ldd vbam
 
 mkdir -vp AppDir/details
 cp -v CMakeCache.txt AppDir/details/
+find|grep -v "$PATH_SOURCECODE" > AppDir/details/contents.txt

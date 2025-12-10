@@ -12,17 +12,20 @@ NAME="VisualBoyAdvance-M"
 PATH_SOURCECODE="$(realpath -e visualboyadvance-m.source)"
 PATH_DESKTOP=$(realpath -e visualboyadvance-m.desktop)
 
+# APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_"$ARCH"
+APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_anylinux_"$ARCH"
+
 export ARCH VERSION
 # export ADD_HOOKS="self-updater.bg.hook"
 # export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
 export ICON=$(realpath -e "$PATH_SOURCECODE"/src/wx/icons/sizes/256x256/apps/visualboyadvance-m.png)
 export DESKTOP=$(realpath -e visualboyadvance-m.desktop)
-export OUTNAME="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_anylinux_"$ARCH".AppImage
+export OUTNAME="$APPIMAGE_STEM".AppImage
 export OUTPATH=./dist
 
 export NO_STRIP=1
 export DEPLOY_OPENGL=1
-export DEPLOY_GEGL=1
+export DEPLOY_GEGL=0
 export DEPLOY_PULSE=1
 export DEPLOY_PIPEWIRE=1
 export DEPLOY_VULKAN=0
@@ -37,6 +40,8 @@ export DEPLOY_LOCALES=1
 mkdir -vp AppDir/details
 echo "$GH_SHA" > AppDir/details/commit.txt
 
+find AppDir > "$OUTPATH"/"$APPIMAGE_STEM".txt
+
 #mkdir -vp AppDir/usr/bin
 #mkdir -vp AppDir/shared/bin
 #cp -va "$PATH_ALL_ICONS"/* AppDir/usr/share/icons/scalable/
@@ -46,7 +51,7 @@ echo "$GH_SHA" > AppDir/details/commit.txt
 # cp -v /usr/share/aclocal/wxwin.m4 AppDir/share/aclocal/
 
 # Deploy dependencies
-./quick-sharun.sh ./vbam ./visualboyadvance-m /usr/lib/libwx_gtk3u_xrc-3.2.*
+./quick-sharun.sh ./vbam ./visualboyadvance-m
 
 # Additional changes can be done in between here
 
