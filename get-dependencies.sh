@@ -41,13 +41,11 @@ chmod +x ./"$REC_PKGS"
 # wxwidgets-gtk3 is broken right now
 # https://gitlab.archlinux.org/archlinux/packaging/packages/wxwidgets/-/issues/7
 
-# consider the following versions
-# https://archive.archlinux.org/packages/w/wxgtk2/
-# https://archive.archlinux.org/packages/w/wxgtk2/wxgtk2-3.1.2-1-x86_64.pkg.tar.xz
-# https://archive.archlinux.org/packages/w/wxgtk-common/
-# https://archive.archlinux.org/packages/w/wxgtk-common/wxgtk-common-3.1.2-1-x86_64.pkg.tar.xz
-# https://archive.archlinux.org/packages/w/wxgtk3/wxgtk3-3.1.2-1-x86_64.pkg.tar.xz
+# NO https://archive.archlinux.org/packages/w/wxgtk-common/wxgtk-common-3.1.2-1-x86_64.pkg.tar.xz
+# NO https://archive.archlinux.org/packages/w/wxgtk3/wxgtk3-3.1.2-1-x86_64.pkg.tar.xz
 
+# https://archive.org/download/archlinux_pkg_wxwidgets-common/wxwidgets-common-3.2.6-1-x86_64.pkg.tar.zst
+# https://archive.org/download/archlinux_pkg_wxwidgets-gtk3/wxwidgets-gtk3-3.2.6-1-x86_64.pkg.tar.zst
 
 pacman -Syy --noconfirm \
 	base-devel sdl2 \
@@ -55,8 +53,8 @@ pacman -Syy --noconfirm \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
 
-pacman -U --noconfirm "https://archive.archlinux.org/packages/w/wxgtk-common/wxgtk-common-3.1.2-1-x86_64.pkg.tar.xz"
-pacman -U --noconfirm "https://archive.archlinux.org/packages/w/wxgtk3/wxgtk3-3.1.2-1-x86_64.pkg.tar.xz"
+pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-common/wxwidgets-common-3.2.6-1-x86_64.pkg.tar.zst"
+pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-gtk3/wxwidgets-gtk3-3.2.6-1-x86_64.pkg.tar.zst"
 
 ################################################################################
 echo "→ Installing debloated packages..."
