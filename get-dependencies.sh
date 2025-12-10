@@ -39,7 +39,7 @@ chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
 pacman -Syu --noconfirm \
-	base-devel sdl12-compat wxwidgets-common wxwidgets-gtk3 \
+	base-devel sdl2 wxwidgets-common wxwidgets-gtk3 \
 	mesa-utils glew glu gegl \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
