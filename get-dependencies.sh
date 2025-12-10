@@ -38,8 +38,11 @@ ls -l "$REC_PKGS"
 chmod +x ./"$REC_PKGS"
 ./"$REC_PKGS"
 
+# wxwidgets-gtk3 is broken right now
+# https://gitlab.archlinux.org/archlinux/packaging/packages/wxwidgets/-/issues/7
+
 pacman -Syu --noconfirm \
-	base-devel sdl2 wxwidgets-common wxwidgets-gtk3 \
+	base-devel sdl2 wxwidgets-common wxwidgets-gtk3==3.2.8.1-2 \
 	mesa-utils glew glu gegl \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
