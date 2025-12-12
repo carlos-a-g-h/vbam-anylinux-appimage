@@ -49,7 +49,7 @@ chmod +x ./"$REC_PKGS"
 
 pacman -Syy --noconfirm \
 	base-devel \
-	sd2-compat sdl2_gfx sdl2_image sdl2_net sdl2_ttf sdl2_mixer \
+	sdl2-compat sdl2_gfx sdl2_image sdl2_net sdl2_ttf sdl2_mixer \
 	mesa-utils glew glu \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
