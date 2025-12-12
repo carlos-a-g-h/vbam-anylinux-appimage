@@ -51,6 +51,10 @@ find AppDir > "$OUTPATH"/"$APPIMAGE_STEM".txt
 # cp -v /usr/share/aclocal/wxwin.m4 AppDir/share/aclocal/
 
 # Deploy dependencies
+
+mkdir -vp AppDir/usr/lib/
+cp -va /usr/lib/wx AppDir/usr/lib/
+
 ./quick-sharun.sh ./vbam ./visualboyadvance-m
 
 # Additional changes can be done in between here
