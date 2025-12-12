@@ -48,8 +48,9 @@ chmod +x ./"$REC_PKGS"
 # https://archive.org/download/archlinux_pkg_wxwidgets-gtk3/wxwidgets-gtk3-3.2.6-1-x86_64.pkg.tar.zst
 
 pacman -Syy --noconfirm \
-	base-devel sdl2 \
-	mesa-utils glew glu gegl \
+	base-devel \
+	sd2-compat sdl2_gfx sdl2_image sdl2_net sdl2_ttf sdl2_mixer \
+	mesa-utils glew glu \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
 
