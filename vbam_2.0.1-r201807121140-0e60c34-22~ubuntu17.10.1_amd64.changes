@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Thu, 12 Jul 2018 11:40:33 +0000
+Source: vbam
+Binary: vbam vbam-sdl vbam-common vbam-gtk
+Architecture: amd64
+Version: 2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1
+Distribution: artful
+Urgency: low
+Maintainer: Launchpad Build Daemon <buildd@lgw01-amd64-031.buildd>
+Changed-By: Sergio Benjamim <sergio_br2@yahoo.com.br>
+Description:
+ vbam       - Nintendo Game Boy Advance emulator
+ vbam-common - Common files for VBA-M
+ vbam-gtk   - Transitional package for vbam-gtk
+ vbam-sdl   - Nintendo Game Boy Advance emulator (SDL frontend)
+Changes:
+ vbam (2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1) artful; urgency=low
+ .
+   * Auto build.
+Checksums-Sha1:
+ d66102bccb5207b03d169e5b31118b231173b280 15158 vbam-common_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ 845d09a7139d421a9958e27e434032cf8dab92a4 13102 vbam-gtk_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ 23d9c76e53174a64c55ec89833de431875515c5b 615390 vbam-sdl_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ 46e863e5e67b425b8050d6992df5df8cc03e901f 17875 vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.buildinfo
+ 6172bbb32e521b80ffa3c31e6580400925818490 1226912 vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+Checksums-Sha256:
+ d55d9fd57e090682b1b0b175e6682d10763cedda6878026875b80ae2f1b8f3ac 15158 vbam-common_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ f1409de5d190476ebcfb9a1cecf6ed455d3d3ab3ae54176dbed00a947f0bd665 13102 vbam-gtk_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ 27151e2dccd12328283f85e9e1b6e1caf3efe4ea02072041519a4d8ca34579a8 615390 vbam-sdl_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ f6dd28806eed0aad084b1a53c9018746ad3a23e55c6452d1ab71cd61fd91580b 17875 vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.buildinfo
+ 2ea9848edbab0868a64fe3fb79f6ad051337fb9e6af6c0cd414f85b94ab2e933 1226912 vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+Files:
+ 1a73ee080da13d3f9f2a43992aa749cc 15158 games optional vbam-common_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ 94d38af1c859b3f6c9632b98d2902aae 13102 oldlibs optional vbam-gtk_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ f81f12bf1fae58356f3a7dadeff19a7a 615390 games optional vbam-sdl_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+ 75ad7ac467f9edca771509d20c4f9aeb 17875 games optional vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.buildinfo
+ 4a656e820fcfc459139b500d277b5789 1226912 games optional vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb

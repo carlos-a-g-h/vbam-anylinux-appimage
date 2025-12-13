@@ -1,0 +1,10 @@
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam-common_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam-gtk_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam-sdl_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+http://archive.ubuntu.com/ubuntu/pool/main/g/gtk%2b2.0/libgtk2.0-0_2.24.32-1ubuntu1_amd64.deb
+http://archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-system2.4_2.4.2%2bdfsg-4_amd64.deb
+http://archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-network2.4_2.4.2%2bdfsg-4_amd64.deb
+http://archive.ubuntu.com/ubuntu/pool/main/t/tiff/libtiff5_4.0.9-5ubuntu0.10_amd64.deb
+http://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.0/libwxbase3.0-0v5_3.0.4%2bdfsg-3_amd64.deb
+http://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.0/libwxgtk3.0-0v5_3.0.4%2bdfsg-3_amd64.deb

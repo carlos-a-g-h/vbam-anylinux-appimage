@@ -1,0 +1,45 @@
+VBA-M 2.0.1 r201807121140-0e60c34 in Ubuntu 17.10.1
+
+by Sergio Benjamim ( https://launchpad.net/~sergio-br2 )
+
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+packages
+
+BUILD INFO
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+build/15115467
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+build/15115467/+files/buildlog_ubuntu-artful-amd64.vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_BUILDING.txt.gz
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+build/15115467/+files/vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.changes
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+build/15115467/+files/vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.buildinfo
+
+DEB PACKAGES
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam-common_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam-gtk_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam-sdl_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+https://launchpad.net/~sergio-br2/+archive/ubuntu/vbam-trunk/+files/vbam_2.0.1-r201807121140-0e60c34-22~ubuntu17.10.1_amd64.deb
+
+ vbam : Depends: libsfml-network2.4 but it is not installable
+        Depends: libsfml-system2.4 (>= 2.4.2+dfsg-4~) but it is not installable
+        Depends: libwxbase3.0-0v5 (>= 3.0.3.1+dfsg2) but it is not installable
+        Depends: libwxgtk3.0-0v5 (>= 3.0.3.1+dfsg2) but it is not installable
+ vbam-sdl : Depends: libsfml-network2.4 but it is not installable
+            Depends: libsfml-system2.4 (>= 2.4.2+dfsg-4~) but it is not installable
+
+http://archive.ubuntu.com/ubuntu/pool/universe/g/gdk-pixbuf-xlib/libgdk-pixbuf-xlib-2.0-0_2.40.2-3build2_amd64.deb
+http://archive.ubuntu.com/ubuntu/pool/main/g/gtk%2b2.0/libgtk2.0-0_2.24.32-1ubuntu1_amd64.deb
+
+http://archive.ubuntu.com/ubuntu bionic/universe amd64 libsfml-system2.4 amd64 2.4.2+dfsg-4 [23,3 kB]
+http://archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-system2.4_2.4.2%2bdfsg-4_amd64.deb
+
+http://archive.ubuntu.com/ubuntu bionic/universe amd64 libsfml-network2.4 amd64 2.4.2+dfsg-4 [42,4 kB]
+http://archive.ubuntu.com/ubuntu/pool/universe/libs/libsfml/libsfml-network2.4_2.4.2%2bdfsg-4_amd64.deb
+
+http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libtiff5 amd64 4.0.9-5ubuntu0.10 [154 kB]
+http://archive.ubuntu.com/ubuntu/pool/main/t/tiff/libtiff5_4.0.9-5ubuntu0.10_amd64.deb
+
+http://archive.ubuntu.com/ubuntu bionic/universe amd64 libwxbase3.0-0v5 amd64 3.0.4+dfsg-3 [954 kB]
+http://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.0/libwxbase3.0-0v5_3.0.4%2bdfsg-3_amd64.deb
+
+http://archive.ubuntu.com/ubuntu bionic/universe amd64 libwxgtk3.0-0v5 amd64 3.0.4+dfsg-3 [4.182 kB]
+http://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.0/libwxgtk3.0-0v5_3.0.4%2bdfsg-3_amd64.deb
+
+
+
