@@ -17,7 +17,7 @@ Version 2.2.3 does not work at the moment
 
 ## What is AnyLinux ?
 
-These AppImages made using [sharun](https://github.com/VHSgunzo/sharun), which makes it extremely easy to turn any binary into a portable package without using containers or similar tricks.
+These AppImages are made using [sharun](https://github.com/VHSgunzo/sharun), which makes it extremely easy to turn any binary into a portable package without using containers or similar tricks.
 
 **These AppImages bundle everything and should work on any linux distro, even on musl based ones.**
 
