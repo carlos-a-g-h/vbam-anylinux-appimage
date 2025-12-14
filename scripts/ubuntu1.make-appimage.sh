@@ -2,8 +2,8 @@
 
 set -eu
 
-#GH_SHA="$1"
-GH_SHA=$(git rev-parse HEAD)
+GH_SHA="$1"
+#GH_SHA=$(git rev-parse HEAD)
 GH_SHA_SHORT="${GH_SHA:0:8}"
 
 ARCH=$(uname -m)
