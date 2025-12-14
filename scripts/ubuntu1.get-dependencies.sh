@@ -10,6 +10,11 @@ set -eu
 ################################################################################
 echo "DOWNLOADING EVERYHTING"
 
+rm -v /etc/apt/sources.list.d/ubuntu.sources
+mv -v ubuntu1/ubuntu.sources /etc/apt/sources.list.d/
+
+apt update
+
 apt install -yy git wget zsync patchelf xvfb
 
 URL_HELPERS="https://github.com/carlos-a-g-h/dependency-helper-scripts"
