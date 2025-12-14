@@ -1,19 +1,35 @@
 # VisualBoyAdvance-M Anylinux AppImages 🐧
 
-## Build status
+### Build status
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/carlos-a-g-h/vbam-anylinux-appimage/total?logo=github&label=GitHub%20Downloads)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 [![CI Build Status](https://github.com//carlos-a-g-h/vbam-anylinux-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
 * [Latest Stable Release](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
-## Variants
+### Variants
 
 - v2.2.3, Built from source on Arch
 
 - v2.1.0, Built using Ubuntu PPA packages
 
 Version 2.2.3 does not work at the moment
+
+### Internal scripts and programs
+
+These AppImages have internal scripts and programs, that can be launched by calling them as commandline arguments
+
+```
+./VBA-M.AppImage [program]
+```
+
+This following table has the most important scripts and programs
+
+|Program or script|Description|
+|-|-|
+|vbam|Run SDL port instead of the wxGTK port|
+| setup | An "installation" script for the appimage. It provides a nice config, a DESKTOP file in /usr/share/applications and an icon |
+| details | Extracts the "details" directory from the AppImage |
 
 ## What is AnyLinux ?
 
