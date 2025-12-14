@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# An "installation" script with recommended config and DESKTOP file
+
+# NOTE: THIS IS AN INTERNAL SCRIPT AND IT CAN ONLY RUN INSIDE THE APPIMAGE AS A COMMAND LINE ARGUMENT
+
+BIN_LINK="/usr/bin/vbam"
+if [ -e "$BIN_LINK" ]
+then
+	echo "Already exists: $BIN_LINK"
+	exit 0
+fi
+
+BIN_LINK="/usr/bin/visualboyadvance-m"
+if [ -e "$BIN_LINK" ]
+then
+	echo "Already exists: $BIN_LINK"
+	exit 0
+fi
+
+echo "Setting up..."
+
+ln -vs "$URUNTIME" /usr/bin/visualboyadvance-m
+ln -vs "$URUNTIME" /usr/bin/vbam
+
+cp -va "$APPDIR"/visualboyadvance-m.png /usr/share/icons/
+
+cp -va "$APPDIR"/visualboyadvance-m.desktop /usr/share/applications/
+chmod +vx /usr/share/applications/visualboyadvance-m.desktop
+
+mkdir -vp "$HOME"/.vbam/
+cp -va "$APPDIR"/vbam.conf "$HOME"/.vbam/
+
+echo "
+All done!
+You can now type 'visuamboyadvance-m' from the commandline to launch the GTK port or 'vbam' to run the SDL port
+ENJOY
+"
