@@ -10,6 +10,8 @@ set -eux
 ################################################################################
 echo "DOWNLOADING EVERYHTING"
 
+apt update
+
 apt install -yy git wget zsync patchelf xvfb
 
 URL_HELPERS="https://github.com/carlos-a-g-h/dependency-helper-scripts"
@@ -32,7 +34,7 @@ echo "INSTALLING DEPENDENCIES"
 # Dependencies are based on this: https://github.com/visualboyadvance-m/snap-release/blob/master/snapcraft.yaml
 # libsfml-network2.6 libsfml-system2.6 are not being installed because the 2.4 version is the one required by vbam 2.1.0
 # libgtk-3-0 is not being installed because vbam 2.1.0 depends on GTK2 only
-apt install -yy libsdl2-2.0-0 libsfml-network2.6 libsfml-system2.6 libnotify4 libsm6 libopenal1 libpng16-16 libpulse0 zlib1g libgl1 libglvnd0 libglx0 libopengl0
+apt install -yy libsdl2-2.0-0 libnotify4 libsm6 libopenal1 libpng16-16 libpulse0 zlib1g libgl1 libglvnd0 libglx0 libopengl0
 
 # Install vbam and the aditional dependencies
 apt install -yy ./*.deb
