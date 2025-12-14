@@ -57,10 +57,10 @@ mkdir -p "$OUTPATH"
 
 # Copy Internal scripts
 
-mkdir -vp AppDir/shared/bin
+mkdir -vp AppDir/bin
 chmod +x is_*
-cp -v is_setup AppDir/shared/bin/setup
-cp -v is_details AppDir/shared/bin/details
+cp -v is_setup AppDir/bin/setup
+cp -v is_details AppDir/bin/details
 
 
 # Turn AppDir into AppImage
