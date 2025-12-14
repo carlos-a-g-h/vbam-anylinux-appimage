@@ -15,7 +15,6 @@ PATH_DESKTOP=$(realpath -e visualboyadvance-m.desktop)
 # APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_"$ARCH"
 APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_anylinux_"$ARCH"
 
-
 export ARCH VERSION
 # export ADD_HOOKS="self-updater.bg.hook"
 # export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
@@ -40,18 +39,29 @@ cp -v "/usr/share/icons/hicolor/256x256/apps/vbam.png" "$ICON"
 ./quick-sharun.sh \
 	/usr/games/vbam /usr/games/visualboyadvance-m
 
-# Copy data files
+mkdir -p gathered
+
+# Copy all data files
 python3 hhs/script_deploy.py \
-	AppDir/shared \
+	gathered\
 	vbam vbam-common vbam-gtk vbam-sdl
 
-rm -rf AppDir/shared/usr/games
+rm -rf gathered/usr/games
 
 mkdir -vp AppDir/details
 echo "$GH_SHA" > AppDir/details/commit.txt
 cp -va ubuntu1/* AppDir/details/
+cp -va gathered/usr/* AppDir/shared
 
 mkdir -p "$OUTPATH"
+
+# Copy Internal scripts
+
+mkdir -vp AppDir/shared/bin
+chmod +vx is_*
+cp -v is_setup AppDir/shared/bin/setup
+cp -v is_details AppDir/shared/bin/details
+
 
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
