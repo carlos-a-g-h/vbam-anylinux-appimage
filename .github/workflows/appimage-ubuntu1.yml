@@ -40,6 +40,9 @@ jobs:
 
       - name: Install Dependencies
         run: |
+          rm -v /etc/apt/sources.list.d/ubuntu.sources
+          mv -v ubuntu1/ubuntu.sources /etc/apt/sources.list.d/
+          apt update
           ./ubuntu1.get-dependencies.sh
 
       - name: Make AppImage
