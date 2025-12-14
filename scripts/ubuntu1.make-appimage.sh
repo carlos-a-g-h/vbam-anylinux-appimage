@@ -51,7 +51,7 @@ rm -rf gathered/usr/games
 mkdir -vp AppDir/details
 echo "$GH_SHA" > AppDir/details/commit.txt
 cp -va ubuntu1/* AppDir/details/
-cp -va gathered/usr/* AppDir/shared
+cp -va gathered/usr/share AppDir/
 
 mkdir -p "$OUTPATH"
 
