@@ -14,7 +14,7 @@ apt update
 
 apt install -yy git wget zsync patchelf xvfb binutils
 
-URL_HELPERS="https://github.com/carlos-a-g-h/dependency-helper-scripts"
+# URL_HELPERS="https://github.com/carlos-a-g-h/dependency-helper-scripts"
 URL_SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 FILE_PKGS=$(realpath -e ./ubuntu1/packages.txt)
 
@@ -23,8 +23,8 @@ chmod +x quick-sharun.sh
 
 wget -i "$FILE_PKGS"
 
-git clone "$URL_HELPERS"
-mv -v dependency-helper-scripts hhs
+# git clone "$URL_HELPERS"
+# mv -v dependency-helper-scripts hhs
 
 find
 

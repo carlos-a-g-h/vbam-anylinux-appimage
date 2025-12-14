@@ -42,9 +42,15 @@ cp -v "/usr/share/icons/hicolor/256x256/apps/vbam.png" "$ICON"
 mkdir -p gathered
 
 # Copy all data files
-python3 hhs/script_deploy.py \
-	gathered \
-	vbam vbam-common vbam-gtk vbam-sdl
+#python3 hhs/script_deploy.py \
+#	gathered \
+#	vbam vbam-common vbam-gtk vbam-sdl
+
+mkdir -v gathered
+for VBAM_PKGS in $(ls vbam*.deb)
+do
+	dpkg -x "$VBAM_PKGS" gathered
+done
 rm -rf gathered/usr/games
 
 # Copy the config
