@@ -39,11 +39,10 @@ jobs:
           chmod +x ubuntu1.*.sh
 
       - name: Install Dependencies
-        run: |
-          ./ubuntu1.get-dependencies.sh
+        run: ./ubuntu1.get-dependencies.sh
 
       - name: Make AppImage
-        run: ./ubuntu1.make-appimage.sh
+        run: ./ubuntu1.make-appimage.sh ${{ github.sha }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
