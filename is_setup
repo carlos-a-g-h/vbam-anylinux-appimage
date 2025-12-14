@@ -32,7 +32,10 @@ mkdir -vp "$HOME"/.vbam/
 cp -va "$APPDIR"/vbam.conf "$HOME"/.vbam/
 
 echo "
+
 All done!
-You can now type 'visuamboyadvance-m' from the commandline to launch the GTK port or 'vbam' to run the SDL port
-ENJOY
+
+You can now type 'visualboyadvance-m' from the commandline to launch the GTK port or 'vbam' to run the SDL port
+
+ENJOY!
 "

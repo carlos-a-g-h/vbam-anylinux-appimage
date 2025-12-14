@@ -45,9 +45,12 @@ mkdir -p gathered
 python3 hhs/script_deploy.py \
 	gathered \
 	vbam vbam-common vbam-gtk vbam-sdl
-
 rm -rf gathered/usr/games
 
+# Copy the config
+cp -va vbam.conf AppDir/
+
+# Copy details
 mkdir -vp AppDir/details
 echo "$GH_SHA" > AppDir/details/commit.txt
 cp -va ubuntu1/* AppDir/details/

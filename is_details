@@ -15,4 +15,6 @@ cp -va "$PATH_DETAILS"/* "$PATH_OK"/
 
 find "$PATH_OK"
 
-echo "All Done!"
+echo "
+
+All Done!"
