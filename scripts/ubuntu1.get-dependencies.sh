@@ -10,13 +10,14 @@ set -eu
 ################################################################################
 echo "DOWNLOADING EVERYHTING"
 
-apt install -yy git wget
+apt install -yy git wget zsync patchelf xvfb
 
 URL_HELPERS="https://github.com/carlos-a-g-h/dependency-helper-scripts"
 URL_SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
-FILE_PKGS=$(realpath -e packages.txt)
+FILE_PKGS=$(realpath -e ./ubuntu1/packages.txt)
 
 wget "$URL_SHARUN"
+chmod +x quick-sharun.sh
 
 wget -i "$FILE_PKGS"
 
