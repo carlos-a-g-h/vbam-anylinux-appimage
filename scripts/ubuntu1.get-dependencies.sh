@@ -23,7 +23,7 @@ chmod +x quick-sharun.sh
 
 wget -i "$FILE_PKGS"
 
-git clone "URL_HELPERS"
+git clone "$URL_HELPERS"
 mv -v dependency-helper-scripts hhs
 
 find
