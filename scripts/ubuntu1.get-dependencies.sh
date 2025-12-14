@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eu
+set -eux
 
 # VBA-M 2.0.1 r201807121140-0e60c34
 
