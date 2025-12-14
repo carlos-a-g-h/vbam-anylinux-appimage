@@ -43,7 +43,7 @@ mkdir -p gathered
 
 # Copy all data files
 python3 hhs/script_deploy.py \
-	gathered\
+	gathered \
 	vbam vbam-common vbam-gtk vbam-sdl
 
 rm -rf gathered/usr/games
