@@ -55,6 +55,8 @@ cp -va gathered/usr/share AppDir/
 
 mkdir -p "$OUTPATH"
 
+cp -va vbam.conf AppDir/
+
 # Copy Internal scripts
 
 mkdir -vp AppDir/bin
