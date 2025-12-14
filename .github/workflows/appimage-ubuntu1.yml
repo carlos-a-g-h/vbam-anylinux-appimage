@@ -39,7 +39,9 @@ jobs:
           chmod +x ubuntu1.*.sh
 
       - name: Install Dependencies
-        run: ./ubuntu1.get-dependencies.sh
+        run: |
+          cat /etc/apt/sources.list
+          ./ubuntu1.get-dependencies.sh
 
       - name: Make AppImage
         run: ./ubuntu1.make-appimage.sh
