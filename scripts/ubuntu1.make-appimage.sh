@@ -58,7 +58,7 @@ mkdir -p "$OUTPATH"
 # Copy Internal scripts
 
 mkdir -vp AppDir/shared/bin
-chmod +vx is_*
+chmod +x is_*
 cp -v is_setup AppDir/shared/bin/setup
 cp -v is_details AppDir/shared/bin/details
 
