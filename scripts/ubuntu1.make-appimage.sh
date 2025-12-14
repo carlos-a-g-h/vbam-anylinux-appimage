@@ -46,7 +46,6 @@ mkdir -p gathered
 #	gathered \
 #	vbam vbam-common vbam-gtk vbam-sdl
 
-mkdir -v gathered
 for VBAM_PKGS in $(ls vbam*.deb)
 do
 	dpkg -x "$VBAM_PKGS" gathered
