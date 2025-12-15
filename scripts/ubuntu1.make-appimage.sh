@@ -10,9 +10,6 @@ ARCH=$(uname -m)
 VERSION="v2.1.0"
 NAME="VisualBoyAdvance-M"
 
-PATH_DESKTOP=$(realpath -e visualboyadvance-m.desktop)
-
-# APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_"$ARCH"
 APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_anylinux_"$ARCH"
 
 export ARCH VERSION
@@ -35,17 +32,12 @@ export DEPLOY_GLYCIN=0
 
 cp -v "/usr/share/icons/hicolor/256x256/apps/vbam.png" "$ICON"
 
-# Deploy dependencies
+# Deploy dependencies for both binaries
 ./quick-sharun.sh \
 	/usr/games/vbam /usr/games/visualboyadvance-m
 
+# Copying missing files such as the locales for VBA-M
 mkdir -p gathered
-
-# Copy all data files
-#python3 hhs/script_deploy.py \
-#	gathered \
-#	vbam vbam-common vbam-gtk vbam-sdl
-
 for VBAM_PKGS in $(ls vbam*.deb)
 do
 	dpkg -x "$VBAM_PKGS" gathered
@@ -61,15 +53,11 @@ echo "$GH_SHA" > AppDir/details/commit.txt
 cp -va ubuntu1/* AppDir/details/
 cp -va gathered/usr/share AppDir/
 
-mkdir -p "$OUTPATH"
-
 # Copy Internal scripts
-
 mkdir -vp AppDir/bin
 chmod +x is_*
 cp -v is_setup AppDir/bin/setup
 cp -v is_details AppDir/bin/details
-
 
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
