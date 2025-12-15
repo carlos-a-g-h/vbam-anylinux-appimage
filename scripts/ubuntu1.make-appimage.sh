@@ -36,13 +36,14 @@ cp -v "/usr/share/icons/hicolor/256x256/apps/vbam.png" "$ICON"
 ./quick-sharun.sh \
 	/usr/games/vbam /usr/games/visualboyadvance-m
 
-# Copying missing files such as the locales for VBA-M
+# Copying missing files such as the locales for VBA-M by extracting the packages directly
 mkdir -p gathered
 for VBAM_PKGS in $(ls vbam*.deb)
 do
 	dpkg -x "$VBAM_PKGS" gathered
 done
 rm -rf gathered/usr/games
+cp -va gathered/usr/share AppDir/
 
 # Copy the config
 cp -va vbam.conf AppDir/
@@ -50,8 +51,8 @@ cp -va vbam.conf AppDir/
 # Copy details
 mkdir -vp AppDir/details
 echo "$GH_SHA" > AppDir/details/commit.txt
+echo "$(date)" > AppDir/details/date.txt
 cp -va ubuntu1/* AppDir/details/
-cp -va gathered/usr/share AppDir/
 
 # Copy Internal scripts
 mkdir -vp AppDir/bin
