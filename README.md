@@ -1,19 +1,22 @@
 # VisualBoyAdvance-M Anylinux AppImages 🐧
 
-### Build status
+## Build status
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/carlos-a-g-h/vbam-anylinux-appimage/total?logo=github&label=GitHub%20Downloads)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
+
 [![CI Build Status](https://github.com//carlos-a-g-h/vbam-anylinux-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
 * [Latest Stable Release](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
+## About this AppImage
+
+VisualBoyAdvance-M does not provide an AppImage officially on their upstream. And that is the reason why I made this repository: To provide not just AppImages, but AppImages that can run ANYWHERE
+
 ### Variants
 
-- v2.2.3, Built from source on Arch
+- v2.2.3, Built from source on Arch (BROKEN)
 
-- v2.1.0, Built using Ubuntu PPA packages
-
-Version 2.2.3 does not work at the moment
+- v2.1.0, Built using Ubuntu PPA packages (WORKING)
 
 ### Internal scripts and programs
 
@@ -23,13 +26,31 @@ These AppImages have internal scripts and programs, that can be launched by call
 ./VBA-M.AppImage [program]
 ```
 
-This following table has the most important scripts and programs
+This AppImage has internal scripts and programs that can be launched by calling them as commandline arguments
 
 |Program or script|Description|
 |-|-|
 |vbam|Run SDL port instead of the wxGTK port|
 | setup | An "installation" script for the appimage. It provides a nice config, a DESKTOP file in /usr/share/applications and an icon |
 | details | Extracts the "details" directory from the AppImage |
+
+### About the setup script
+
+This script can help you integrate the appimage to your system
+
+```
+./VBA-M.AppImage setup [FLAGS]
+```
+
+| Flag | Description |
+|-|-|
+| --install | Performs the installation, integrating the appimage to your system |
+| --no-config | Will not copy the recommended config to your system |
+| --no-links | Will not create symlinks that go from /usr/bin/ to the AppImage |
+| --no-desktop | Will not create the application desktop file and its icon |
+| --force | Overwrites in case that there are files or paths that already exist |
+
+Use the command without any arguments for more details
 
 ## What is AnyLinux ?
 

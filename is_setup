@@ -1,41 +1,227 @@
 #!/bin/bash
 
-# An "installation" script with recommended config and DESKTOP file
+# NOTE: THIS IS AN INTERNAL SCRIPT AND IT CAN ONLY RUN INSIDE THE APPIMAGE AS
+# A COMMAND LINE ARGUMENT
 
-# NOTE: THIS IS AN INTERNAL SCRIPT AND IT CAN ONLY RUN INSIDE THE APPIMAGE AS A COMMAND LINE ARGUMENT
+set -eu
 
-BIN_LINK="/usr/bin/vbam"
-if [ -e "$BIN_LINK" ]
-then
-	echo "Already exists: $BIN_LINK"
-	exit 0
-fi
+MAIN_BIN="/usr/bin/visualboyadvance-m"
 
-BIN_LINK="/usr/bin/visualboyadvance-m"
-if [ -e "$BIN_LINK" ]
-then
-	echo "Already exists: $BIN_LINK"
-	exit 0
-fi
+CONFIG_FILE="vbam.conf"
+CONFIG_DIR="$HOME""/.vbam"
 
-echo "Setting up..."
+DESKTOP="snes9x-gtk.desktop"
+DESKTOP_EXEC=$(basename "$MAIN_BIN")
+PATH_ICON="/usr/share/icons/visualboyadvance-m.png"
+declare -a LBINARIES=(
+	"/usr/bin/vbam"
+	"$MAIN_BIN"
+)
 
-ln -vs "$URUNTIME" /usr/bin/visualboyadvance-m
-ln -vs "$URUNTIME" /usr/bin/vbam
+HELP_USAGE="
+Usage:
 
-cp -va "$APPDIR"/visualboyadvance-m.png /usr/share/icons/
+$ setup [FLAGS]
 
-cp -va "$APPDIR"/visualboyadvance-m.desktop /usr/share/applications/
-chmod +x /usr/share/applications/visualboyadvance-m.desktop
+Available flags/arguments
 
-mkdir -vp "$HOME"/.vbam/
-cp -va "$APPDIR"/vbam.conf "$HOME"/.vbam/
+--install
+	Integrates the AppImage with your system
+	By default it will try to do the following tasks:
+	- Create symlinks that lead to the appimage
+	- Copy a configuration to your home directory
+	- Create a dot DESKTOP application file that will run the appimage
+
+--no-links
+	Will not create symlinks that go from /usr/bin/ to the AppImage
+
+--no-config
+	Will not copy the recommended config during the installation
+
+--no-desktop
+	Will not create/update the application desktop file and its icon
+
+--force
+	Overwrites in case that there are files or paths that already exist
+	This flag only works with the symlinking process
+
+Some examples:
+
+$ setup --install
+Integrates the appimage to our system
+
+$ setup --install --force
+Updates symlinks in case they already exist
+
+$ setup --install --no-links
+Creates the DESKTOP file only
+When the script is unable to create the symlinks, the DESKTOP file will be made to run the appimage directly instead of running it through the symlinks
+"
+
+INSTALL=0
+COPY_CONFIG=1
+MAKE_LINKS=1
+MAKE_DESKTOP=1
+OVERWRITE=0
+declare -a ARGUMENTS=(
+	"--install"
+	"--no-config"
+	"--no-links"
+	"--no-desktop"
+	"--force"
+)
 
 echo "
+	SETUP SCRIPT"
 
-All done!
+for FLAG in $@
+do
 
-You can now type 'visualboyadvance-m' from the commandline to launch the GTK port or 'vbam' to run the SDL port
+	DET=0
 
-ENJOY!
+	if [ "$FLAG" == "--install" ]
+	then
+		DET=1
+		INSTALL=1
+	fi
+
+	if [ "$FLAG" == "--no-config" ]
+	then
+		DET=1
+		COPY_CONFIG=0
+	fi
+
+	if [ "$FLAG" == "--no-links" ]
+	then
+		DET=1
+		MAKE_LINKS=0
+	fi
+
+	if [ "$FLAG" == "--no-desktop" ]
+	then
+		DET=1
+		MAKE_DESKTOP=0
+	fi
+
+	if [ "$FLAG" == "--force" ]
+	then
+		DET=1
+		OVERWRITE=1
+	fi
+
+	if [ $DET -eq 1 ]
+	then
+		echo "Detected flag: $FLAG"
+	fi
+done
+
+echo "
+AppImage path: $(realpath -e "$URUNTIME")
+Mounted path: $(realpath -e "$APPDIR")
 "
+
+if ! [ $INSTALL -eq 1 ]
+then
+	echo "$HELP_USAGE"
+	exit 0
+fi
+
+if [ $MAKE_LINKS -eq 1 ]
+then
+
+	# Symlinks
+
+	for BIN_LINK in "${LBINARIES[@]}"
+	do
+
+		if [ -e "$BIN_LINK" ]
+		then
+
+			if [ $OVERWRITE -eq 0 ]
+			then
+				MAKE_LINKS=0
+				echo "the path already exists: $BIN_LINK"
+				continue
+			fi
+
+			rm -vrf "$BIN_LINK"
+
+		fi
+
+		ln -vs "$URUNTIME" "$BIN_LINK"
+	done
+
+fi
+
+if [ $MAKE_DESKTOP -eq 1 ]
+then
+
+	# Icon
+	mkdir -vp "$(dirname "$PATH_ICON")"
+	cp -v "$APPDIR"/.DirIcon "$PATH_ICON"
+
+	# dot DESKTOP
+
+	DESKTOP_OK="/usr/share/applications/""$DESKTOP"
+
+	cp -v "$APPDIR"/"$DESKTOP" /usr/share/applications/
+	chmod +x "$DESKTOP_OK"
+
+	if [ $MAKE_LINKS -eq 1 ]
+	then
+
+		if ! [ -f "$MAIN_BIN" ]
+		then
+			MAKE_LINKS=0
+		fi
+
+		if [ -f "$MAIN_BIN" ]
+		then
+
+			DESTINATION=$(readlink "$MAIN_BIN")
+			if ! [ "$DESTINATION" == "$URUNTIME" ]
+			then
+				MAKE_LINKS=0
+			fi
+
+		fi
+
+	fi
+
+	MAIN_BIN_NAME="$(basename "$MAIN_BIN")"
+
+	if [ $MAKE_LINKS -eq 0 ]
+	then
+		sed -i 's:Exec='"$MAIN_BIN_NAME"':Exec=\"'"$URUNTIME"'\":' "$DESKTOP_OK"
+	fi
+fi
+
+# Config
+if [ $COPY_CONFIG -eq 1 ]
+then
+	mkdir -p "$CONFIG_DIR"
+	cp -va "$APPDIR"/"$CONFIG_FILE" "$CONFIG_DIR"/"$CONFIG_FILE"
+fi
+
+echo "
+All done!"
+
+if [ $MAKE_LINKS -eq 1 ]
+then
+	echo "[!] The following symlinks will now run the appimage:"
+	for BIN_LINK in "${LBINARIES[@]}"
+	do
+		echo "→ $BIN_LINK"
+	done
+fi
+
+if [ $MAKE_DESKTOP -eq 1 ]
+then
+	echo "[!] Created/updated the application file: $DESKTOP"
+	cat /usr/share/applications/"$DESKTOP"|grep "^Exec="
+fi
+
+if [ $COPY_CONFIG -eq 1 ]
+then
+	echo "[!] Copied the config"
+fi
