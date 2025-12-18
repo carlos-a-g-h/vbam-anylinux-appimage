@@ -10,7 +10,7 @@ MAIN_BIN="/usr/bin/visualboyadvance-m"
 CONFIG_FILE="vbam.conf"
 CONFIG_DIR="$HOME""/.vbam"
 
-DESKTOP="snes9x-gtk.desktop"
+DESKTOP="visualboyadvance-m.desktop"
 DESKTOP_EXEC=$(basename "$MAIN_BIN")
 PATH_ICON="/usr/share/icons/visualboyadvance-m.png"
 declare -a LBINARIES=(
