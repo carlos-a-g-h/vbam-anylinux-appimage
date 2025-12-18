@@ -56,9 +56,11 @@ cp -va ubuntu1/* AppDir/_details/
 
 # Copy Internal scripts
 mkdir -vp AppDir/bin
-chmod +x is_*
-cp -v is_setup AppDir/bin/setup
 cp -v is_details AppDir/bin/details
+cp -v is_setup.1.sh AppDir/bin/setup
+cat is_setup.2.sh >> AppDir/bin/setup
+chmod +x AppDir/bin/details
+chmod +x AppDir/bin/setup
 
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
