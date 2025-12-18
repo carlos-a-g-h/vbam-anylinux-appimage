@@ -253,7 +253,7 @@ then
 			rm -vrf "$CONFIG_DIR"
 		fi
 		mkdir -vp "$CONFIG_DIR"
-		cp -va "$APPDIR"/_config/* "$CONFIG_DIR"/*
+		cp -va "$APPDIR"/_config/* "$CONFIG_DIR"/
 	fi
 
 fi
