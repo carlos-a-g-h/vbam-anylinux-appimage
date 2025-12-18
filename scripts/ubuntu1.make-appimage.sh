@@ -46,13 +46,13 @@ rm -rf gathered/usr/games
 cp -va gathered/usr/share AppDir/
 
 # Copy the config
-cp -va vbam.conf AppDir/
+cp -va _config AppDir/
 
 # Copy details
-mkdir -vp AppDir/details
-echo "$GH_SHA" > AppDir/details/commit.txt
-echo "$(date)" > AppDir/details/date.txt
-cp -va ubuntu1/* AppDir/details/
+mkdir -vp AppDir/_details
+echo "$GH_SHA" > AppDir/_details/commit.txt
+echo "$(date)" > AppDir/_details/date.txt
+cp -va ubuntu1/* AppDir/_details/
 
 # Copy Internal scripts
 mkdir -vp AppDir/bin
