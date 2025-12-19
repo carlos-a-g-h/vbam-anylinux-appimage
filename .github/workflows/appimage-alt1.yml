@@ -1,4 +1,4 @@
-name: Anylinux-AppImage (ubuntu1)
+name: Anylinux-AppImage (alt1)
 
 concurrency:
   group: build-${{ github.ref }}
