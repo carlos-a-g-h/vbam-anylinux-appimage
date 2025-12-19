@@ -13,10 +13,8 @@ apt-get install -yy git wget zsync patchelf xorg-xvfb binutils build-essential
 
 URL_SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 
-wget "$URL_SHARUN"
+wget "$URL_SHARUN" -O quick-sharun.sh
 chmod +x quick-sharun.sh
-
-wget -i "$FILE_PKGS"
 
 ################################################################################
 echo "INSTALLING DEPENDENCIES"
