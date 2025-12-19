@@ -17,13 +17,13 @@ VisualBoyAdvance-M does not provide an AppImage officially on their upstream. An
     <img width="1920" alt="gottaseethis" src="https://github.com/user-attachments/assets/bb00e59f-78eb-4bf2-9e03-18e20ae19253" />
 </details>
 
-### Variants
+### Variants/Versions
 
-- v2.2.3 Built using ALT Linux packages (WORLOK)
+- v2.2.3 Built using ALT Linux packages ( [WORKING](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/download/v2.2.3%402025-12-19_1766114051/VisualBoyAdvance-M_v2.2.3_cb8ec7cc_anylinux_x86_64.AppImage) )
 
 - v2.2.3, Built from source on Arch (BROKEN)
 
-- v2.1.0, Built using Ubuntu PPA packages (WORKING)
+- v2.1.0, Built using Ubuntu packages from a specific PPA ( [WORKING](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/download/v2.1.0%402025-12-18_1766093124/VisualBoyAdvance-M_v2.1.0_f88cb6af_anylinux_x86_64.AppImage) )
 
 ### Internal scripts and programs
 
