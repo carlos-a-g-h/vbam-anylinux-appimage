@@ -32,13 +32,13 @@ jobs:
 
       - name: Get the ubuntu1 scripts and nuke the rest
         run: |
-          apt-get update
+          apt-update
           apt-get install -yy glibc-pthread glibc-utils
 
       - name: Get repo
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - name: Get the ubuntu1 scripts and nuke the rest
+      - name: Get the correct scripts and nuke the rest
         run: |
           cp -va scripts/alt1.* ./
           rm -rf scripts
