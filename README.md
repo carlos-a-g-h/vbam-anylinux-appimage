@@ -12,7 +12,14 @@
 
 VisualBoyAdvance-M does not provide an AppImage officially on their upstream. And that is the reason why I made this repository: To provide not just AppImages, but AppImages that can run ANYWHERE
 
+<details>
+  <summary><b><i>THIS IS REAL</i></b></summary>
+    <img width="1920" alt="gottaseethis" src="https://github.com/user-attachments/assets/bb00e59f-78eb-4bf2-9e03-18e20ae19253" />
+</details>
+
 ### Variants
+
+- v2.2.3 Built using ALT Linux packages (WORLOK)
 
 - v2.2.3, Built from source on Arch (BROKEN)
 
@@ -65,5 +72,4 @@ More at: [AnyLinux-AppImages](https://pkgforge-dev.github.io/Anylinux-AppImages/
 <details>
   <summary><b><i>raison d'être</i></b></summary>
     <img src="https://github.com/user-attachments/assets/d40067a6-37d2-4784-927c-2c7f7cc6104b" alt="Inspiration Image">
-  </a>
 </details>
