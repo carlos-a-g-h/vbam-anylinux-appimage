@@ -10,9 +10,9 @@ set -eux
 ################################################################################
 echo "DOWNLOADING EVERYHTING"
 
-apt-get update
+# apt-get update
 
-apt install -yy git wget zsync patchelf xvfb binutils build-essential
+apt-get install -yy git wget zsync patchelf xvfb binutils build-essential
 
 URL_SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 
