@@ -32,6 +32,7 @@ jobs:
 
       - name: Get the ubuntu1 scripts and nuke the rest
         run: |
+          apt-get update
           apt-get install -yy glibc-pthread glibc-utils
 
       - name: Get repo
