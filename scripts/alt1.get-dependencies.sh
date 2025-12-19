@@ -2,10 +2,7 @@
 
 set -eux
 
-# VBA-M 2.0.1 r201807121140-0e60c34
-
-# NOTE:
-# The vbam packages are versioned as 2.0.1 but the binaries inside are 2.1.0. Possible typo...?
+# There's no apt,on ALT, there is apt-get
 
 ################################################################################
 echo "DOWNLOADING EVERYHTING"
