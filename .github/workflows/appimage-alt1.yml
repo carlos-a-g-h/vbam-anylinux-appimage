@@ -20,7 +20,7 @@ jobs:
       matrix:
         include:
           - runs-on: ubuntu-latest
-            name: Build AppImage (ubuntu1)
+            name: Build AppImage
             arch: x86_64
           # comment out these 3 lines if aarch64 is not wanted
           #- runs-on: ubuntu-24.04-arm
