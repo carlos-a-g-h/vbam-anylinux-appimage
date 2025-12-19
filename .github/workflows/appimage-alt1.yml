@@ -29,6 +29,11 @@ jobs:
     #container: ghcr.io/pkgforge-dev/archlinux:latest
     container: alt:sisyphus
     steps:
+
+      - name: Get the ubuntu1 scripts and nuke the rest
+        run: |
+          apt-get install -yy glibc-pthread glibc-utils
+
       - name: Get repo
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
