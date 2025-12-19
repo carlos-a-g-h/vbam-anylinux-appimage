@@ -30,9 +30,9 @@ jobs:
     container: alt:sisyphus
     steps:
 
-      - name: Get the ubuntu1 scripts and nuke the rest
+      - name: Ensure these packages are installed
         run: |
-          apt-update
+          apt-get update
           apt-get install -yy glibc-pthread glibc-utils
 
       - name: Get repo
