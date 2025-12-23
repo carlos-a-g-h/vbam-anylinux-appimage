@@ -41,7 +41,10 @@ jobs:
         run: /bin/bash ./ubuntu1.make-appimage.sh "${{ github.sha }}"
 
       - name: Show AppImage
-        run: ls -l dist
+        run: |
+          ls -l dist
+          echo "appinfo:"
+          cat dist/appinfo
 
       - name: Upload artifact
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
@@ -86,7 +89,10 @@ jobs:
         run: /bin/bash ./alt1.make-appimage.sh "${{ github.sha }}"
 
       - name: Show AppImage
-        run: ls -l dist
+        run: |
+          ls -l dist
+          echo "appinfo:"
+          cat dist/appinfo
 
       - name: Upload artifact
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
@@ -108,9 +114,17 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
         with:
           pattern: AppImage-*
           merge-multiple: true
+
+      - name: Extra stuff before making the release
+        run: |
+          echo "$(date +%Y.%m.%d)" > override
+          find
+
       - name: Release AppImage
-        uses: pkgforge-dev/make-stable-appimage-release@4ed3d48ccb065352b6e6c0db6d39885b201c54a0 #v1.1
+        uses: carlos-a-g-h/make-stable-appimage-release@version-override
+        # uses: pkgforge-dev/make-stable-appimage-release@4ed3d48ccb065352b6e6c0db6d39885b201c54a0 #v1.1
