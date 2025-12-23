@@ -17,3 +17,11 @@ declare -a LBINARIES=(
 	"$MAIN_BIN"
 )
 
+function additional_config_tasks() {
+	mkdir -vp "$CONFIG_DIR"/battery
+	mkdir -vp "$CONFIG_DIR"/recordings
+	mkdir -vp "$CONFIG_DIR"/savestates
+	mkdir -vp "$CONFIG_DIR"/screenshots
+	sed -i "s:HOME_DIRECTORY:$HOME:" "$CONFIG_DIR"/vbam.conf
+	sed -i "s:HOME_DIRECTORY:$HOME:" "$CONFIG_DIR"/vbam.ini
+}
