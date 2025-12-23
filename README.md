@@ -19,11 +19,11 @@ VisualBoyAdvance-M does not provide an AppImage officially on their upstream. An
 
 ### Variants/Versions
 
-- v2.2.3 alt1. Built using ALT Linux packages. Released for x64 and ARM (WORKING)
-
-- v2.2.3 arch1. Built from source on Arch (NOT WORKING)
-
-- v2.1.0 ubuntu1. Built using Ubuntu packages from a specific PPA (WORKING)
+| Version | Variant name | Status | Description |
+|-|-|-|-|
+| v2.2.3 | arch1 | BROKEN | Built from source on Arch |
+| v2.2.3 | alt1 | WORKING | Built using ALT Linux packages. Released for x64 and ARM |
+| v2.1.0 | ubuntu1 | WORKING | Built using Ubuntu packages from a specific PPA |
 
 ### Internal scripts and programs
 
