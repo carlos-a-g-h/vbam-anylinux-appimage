@@ -29,8 +29,9 @@ jobs:
 
       - name: Get the ubuntu1 scripts and nuke the rest
         run: |
+          find scripts
           cp -va scripts/ubuntu1.* ./
-          rm -rf scripts
+          # rm -rf scripts
           chmod +x *.sh
 
       - name: Install Dependencies
@@ -73,8 +74,9 @@ jobs:
 
       - name: Get the correct scripts and nuke the rest
         run: |
+          find scripts
           cp -va scripts/alt1.* ./
-          rm -rf scripts
+          # rm -rf scripts
           chmod +x *.sh
 
       - name: Install Dependencies
