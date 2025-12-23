@@ -122,7 +122,7 @@ jobs:
 
       - name: Extra stuff before making the release
         run: |
-          echo "$(date +%Y.%m.%d)" > override
+          echo "v$(date +%Y.%m.%d)" > override
           find
 
       - name: Release AppImage
