@@ -10,7 +10,7 @@ ARCH=$(uname -m)
 VERSION="v$(rpm -q --queryformat %{VERSION} visualboyadvance-m)"
 NAME="VisualBoyAdvance-M"
 
-APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_anylinux_"$ARCH"
+APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_alt1_anylinux_"$ARCH"
 
 export ARCH VERSION
 # export ADD_HOOKS="self-updater.bg.hook"

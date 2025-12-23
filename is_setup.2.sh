@@ -25,6 +25,7 @@ Available flags/arguments
 
 --force
 	Overwrites in case that there are files or paths that already exist
+	In the specific case of the program's config, a backup will be made locally before copying it and if a backup already exists, it will be wiped first
 
 Some examples:
 
@@ -218,7 +219,7 @@ then
 
 		if [ $MAKE_LINKS -eq 0 ]
 		then
-			sed -i 's:Exec='"$MAIN_BIN_NAME"':Exec=\"'"$URUNTIME"'\":' "$DESKTOP_OK"
+			sed -i 's:Exec='"$DESKTOP_EXEC"':Exec=\"'"$URUNTIME"'\":' "$DESKTOP_OK"
 		fi
 
 	fi
@@ -250,10 +251,22 @@ then
 	then
 		if [ $OVERWRITE -eq 1 ]
 		then
-			rm -vrf "$CONFIG_DIR"
+			BACKUP="$CONFIG_DIR".backup
+			if [ -e "$BACKUP" ]
+			then
+				echo "$MSG_NOT DELETING OLD BACKUP..."
+				rm -vrf "$BACKUP"
+			fi
+			echo "$MSG_NOT CREATING A BACKUP OF THE CURRENT CONFIG..."
+			mv -v "$CONFIG_DIR" "$CONFIG_DIR".backup
 		fi
 		mkdir -vp "$CONFIG_DIR"
 		cp -va "$APPDIR"/_config/* "$CONFIG_DIR"/
+
+		# RUN EXTRA JOB(s)
+
+		additional_config_tasks
+
 	fi
 
 fi

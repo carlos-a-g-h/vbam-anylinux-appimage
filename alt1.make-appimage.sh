@@ -7,15 +7,16 @@ GH_SHA="$1"
 GH_SHA_SHORT="${GH_SHA:0:8}"
 
 ARCH=$(uname -m)
-VERSION="v2.1.0"
+VERSION="$(date +%Y.%m.%d)"
+VERSION_SW="v$(rpm -q --queryformat %{VERSION} visualboyadvance-m)"
 NAME="VisualBoyAdvance-M"
 
-APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_ubuntu1_anylinux_"$ARCH"
+APPIMAGE_STEM="$NAME"_"$VERSION_SW"_"$GH_SHA_SHORT"_alt1_anylinux_"$ARCH"
 
 export ARCH VERSION
 # export ADD_HOOKS="self-updater.bg.hook"
 # export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON="/usr/share/icons/visualboyadvance-m.png"
+export ICON="/usr/share/icons/hicolor/256x256/apps/visualboyadvance-m.png"
 export DESKTOP=$(realpath -e visualboyadvance-m.desktop)
 export OUTNAME="$APPIMAGE_STEM".AppImage
 export OUTPATH=./dist
@@ -26,23 +27,26 @@ export DEPLOY_GEGL=0
 export DEPLOY_PULSE=1
 export DEPLOY_PIPEWIRE=1
 export DEPLOY_VULKAN=0
-export DEPLOY_GTK=0
+export DEPLOY_GTK=1
 export DEPLOY_SDL=1
 export DEPLOY_GLYCIN=0
 
-cp -v "/usr/share/icons/hicolor/256x256/apps/vbam.png" "$ICON"
+# cp -v "/usr/share/icons/hicolor/256x256/apps/vbam.png" "$ICON"
 
 # Deploy dependencies for both binaries
 ./quick-sharun.sh \
-	/usr/games/vbam /usr/games/visualboyadvance-m
+	/usr/bin/vbam /usr/bin/visualboyadvance-m
 
-# Copying missing files such as the locales for VBA-M by extracting the packages directly
+# Copy the missing files such as... LOCALES
 mkdir -p gathered
-for VBAM_PKGS in $(ls vbam*.deb)
+SELECTED=$(find /usr/share/locale/|grep wxvbam.mo)
+for TGT in $SELECTED
 do
-	dpkg -x "$VBAM_PKGS" gathered
+	DEST="gathered""$TGT"
+	DEST_PARENT="$(dirname "$DEST")"
+	mkdir -p "$DEST_PARENT"
+	cp -v "$TGT" "$DEST"
 done
-rm -rf gathered/usr/games
 cp -va gathered/usr/share AppDir/
 
 # Copy the config
@@ -52,7 +56,8 @@ cp -va _config AppDir/
 mkdir -vp AppDir/_details
 echo "$GH_SHA" > AppDir/_details/commit.txt
 echo "$(date)" > AppDir/_details/date.txt
-cp -va ubuntu1/* AppDir/_details/
+cat /etc/os-release > AppDir/_details/system.txt
+rpm -qa > AppDir/_details/packages.txt
 
 # Copy Internal scripts
 mkdir -vp AppDir/bin
