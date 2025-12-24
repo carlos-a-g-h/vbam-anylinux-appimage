@@ -10,7 +10,7 @@
 
 ## About this AppImage
 
-VisualBoyAdvance-M does not provide an AppImage officially on their upstream. And that is the reason why I made this repository: To provide not just AppImages, but AppImages that can run ANYWHERE
+VisualBoyAdvance-M does [not provide an AppImage officially on their upstream](https://github.com/visualboyadvance-m/visualboyadvance-m/releases). And that is the reason why I made this repository: To provide not just AppImages, but AppImages that can run ANYWHERE, details about this at the end of this README
 
 <details>
   <summary><b><i>THIS IS REAL</i></b></summary>
