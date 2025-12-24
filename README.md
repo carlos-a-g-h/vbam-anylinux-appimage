@@ -15,6 +15,7 @@ VisualBoyAdvance-M does not provide an AppImage officially on their upstream. An
 <details>
   <summary><b><i>THIS IS REAL</i></b></summary>
     <img width="1920" alt="gottaseethis" src="https://github.com/user-attachments/assets/bb00e59f-78eb-4bf2-9e03-18e20ae19253" />
+    <strong><i>System: Debian 11, libc6 2.31</i></strong>
 </details>
 
 ### Variants/Versions
