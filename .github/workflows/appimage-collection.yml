@@ -123,9 +123,7 @@ jobs:
       - name: Force specific version
         run: |
           VERSION_COL="v$(date +%Y.%m.%d)"
-          mv -v appinfo appinfo.original
-          cat appinfo.original|grep -e "X-AppImage-Name=" -e "X-AppImage-Arch=" >> appinfo
-          echo "X-AppImage-Version=$VERSION_COL" >> appinfo
+          sed -i "s/X-AppImage-Version=.*/X-AppImage-Version=$VERSION_COL/" ./appinfo
 
       - name: Release AppImage
         # uses: carlos-a-g-h/make-stable-appimage-release@version-override
