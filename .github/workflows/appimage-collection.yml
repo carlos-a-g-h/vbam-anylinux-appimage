@@ -122,7 +122,7 @@ jobs:
 
       - name: Force specific version
         run: |
-          VERSION_COL=$(date +%Y.%m.%d)"
+          VERSION_COL="$(date +%Y.%m.%d)"
           mv -v appinfo appinfo.original
           cat appinfo.original|grep -e "X-AppImage-Name=" -e "X-AppImage-Arch=" >> appinfo
           echo "X-AppImage-Version=$VERSION_COL" >> appinfo
