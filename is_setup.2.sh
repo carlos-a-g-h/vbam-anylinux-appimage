@@ -230,9 +230,14 @@ fi
 if [ $COPY_CONFIG -eq 1 ]
 then
 
+	AE=0
+
 	OK=0
+
 	if [ -f "$CONFIG_DIR" ] || [ -d "$CONFIG_DIR" ]
 	then
+
+		AE=1
 
 		ls -l "$CONFIG_DIR"
 
@@ -249,7 +254,7 @@ then
 
 	if [ $OK -eq 1 ]
 	then
-		if [ $OVERWRITE -eq 1 ]
+		if [ $AE -eq 1 ] && [ $OVERWRITE -eq 1 ]
 		then
 			BACKUP="$CONFIG_DIR".backup
 			if [ -e "$BACKUP" ]

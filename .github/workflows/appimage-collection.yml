@@ -120,11 +120,13 @@ jobs:
           pattern: AppImage-*
           merge-multiple: true
 
-      - name: Extra stuff before making the release
+      - name: Force specific version
         run: |
-          echo "v$(date +%Y.%m.%d)" > override
-          find
+          VERSION_COL=$(date +%Y.%m.%d)"
+          mv -v appinfo appinfo.original
+          cat appinfo.original|grep -e "X-AppImage-Name=" -e "X-AppImage-Arch=" >> appinfo
+          echo "X-AppImage-Version=$VERSION_COL" >> appinfo
 
       - name: Release AppImage
-        uses: carlos-a-g-h/make-stable-appimage-release@version-override
-        # uses: pkgforge-dev/make-stable-appimage-release@4ed3d48ccb065352b6e6c0db6d39885b201c54a0 #v1.1
+        # uses: carlos-a-g-h/make-stable-appimage-release@version-override
+        uses: pkgforge-dev/make-stable-appimage-release@4ed3d48ccb065352b6e6c0db6d39885b201c54a0 #v1.1
