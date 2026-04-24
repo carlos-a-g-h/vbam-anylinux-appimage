@@ -4,7 +4,7 @@
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/carlos-a-g-h/vbam-anylinux-appimage/total?logo=github&label=GitHub%20Downloads)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
-[![CI Build Status](https://github.com//carlos-a-g-h/vbam-anylinux-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
+[![CI Build Status](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/actions/workflows/appimage-collection.yml/badge.svg)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
 * [Latest Stable Release](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
