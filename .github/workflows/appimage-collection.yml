@@ -1,4 +1,4 @@
-name: Anylinux-AppImages
+name: Anylinux-AppImage Collection
 # concurrency:
 #   group: build-${{ github.ref }}
 #   cancel-in-progress: true
@@ -122,7 +122,7 @@ jobs:
 
       - name: Force specific version
         run: |
-          VERSION_COL="v$(date +%Y.%m.%d)"
+          VERSION_COL="$(date +%Y.%m.%d)"
           sed -i "s/X-AppImage-Version=.*/X-AppImage-Version=$VERSION_COL/" ./appinfo
 
       - name: Release AppImage
