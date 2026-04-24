@@ -1,8 +1,8 @@
 #!/bin/sh
 
-set -eux
-
 # VBA-M 2.0.1 r201807121140-0e60c34
+
+set -eux
 
 # NOTE:
 # The vbam packages are versioned as 2.0.1 but the binaries inside are 2.1.0. Possible typo...?

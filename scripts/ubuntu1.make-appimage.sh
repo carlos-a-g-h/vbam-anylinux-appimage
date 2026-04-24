@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# VBA-M 2.0.1 r201807121140-0e60c34
+
 set -eu
 
 GH_SHA="$1"
@@ -7,10 +9,10 @@ GH_SHA="$1"
 GH_SHA_SHORT="${GH_SHA:0:8}"
 
 ARCH=$(uname -m)
-VERSION="v2.1.0"
+VERSION="2.1.0"
 NAME="VisualBoyAdvance-M"
 
-APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_ubuntu1_anylinux_"$ARCH"
+APPIMAGE_STEM="$NAME"_v"$VERSION"_"$GH_SHA_SHORT"_ubuntu1_anylinux_"$ARCH"
 
 export ARCH VERSION
 # export ADD_HOOKS="self-updater.bg.hook"
@@ -50,9 +52,9 @@ cp -va _config AppDir/
 
 # Copy details
 mkdir -vp AppDir/_details
+cp -va ubuntu1/* AppDir/_details/
 echo "$GH_SHA" > AppDir/_details/commit.txt
 echo "$(date)" > AppDir/_details/date.txt
-cp -va ubuntu1/* AppDir/_details/
 
 # Copy Internal scripts
 mkdir -vp AppDir/bin
