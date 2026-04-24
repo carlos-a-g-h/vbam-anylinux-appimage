@@ -6,15 +6,13 @@
 
 [![CI Build Status](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/actions/workflows/appimage-collection.yml/badge.svg)](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
 
-* [Latest Stable Release](https://github.com/carlos-a-g-h/vbam-anylinux-appimage/releases/latest)
+## About this AppImage Collection
 
-## About this AppImage
-
-VisualBoyAdvance-M does [not provide an AppImage officially on their upstream](https://github.com/visualboyadvance-m/visualboyadvance-m/releases). And that is the reason why I made this repository: To provide not just AppImages, but AppImages that can run ANYWHERE, details about this at the end of this README
+[VisualBoyAdvance-M](https://github.com/visualboyadvance-m/visualboyadvance-m) does not provide an AppImage officially among their [releases](https://github.com/visualboyadvance-m/visualboyadvance-m/releases). And that is the reason why I made this repository: To provide not just AppImages, but AppImages that can run ANYWHERE; more details about this at the end of this README
 
 <details>
   <summary><b><i>THIS IS REAL</i></b></summary>
-    <img width="1920" alt="gottaseethis" src="https://github.com/user-attachments/assets/bb00e59f-78eb-4bf2-9e03-18e20ae19253" />
+    <img width="1920" height="1080" alt="old-system-running-fresh-software" src="https://github.com/user-attachments/assets/bb00e59f-78eb-4bf2-9e03-18e20ae19253" />
     <strong><i>System: Debian 11, libc6 2.31</i></strong>
 </details>
 
@@ -25,6 +23,8 @@ VisualBoyAdvance-M does [not provide an AppImage officially on their upstream](h
 | v2.2.3 | arch1 | BROKEN | Built from source on Arch |
 | v2.2.3 | alt1 | WORKING | Built using ALT Linux packages. Released for x64 and ARM |
 | v2.1.0 | ubuntu1 | WORKING | Built using Ubuntu packages from a specific PPA |
+
+Among the releases, the ALT Linux variant (alt1) is recommended
 
 ### Internal scripts and programs
 
