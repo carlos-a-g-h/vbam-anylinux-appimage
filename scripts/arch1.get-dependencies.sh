@@ -4,7 +4,7 @@ set -eu
 
 ARCH=$(uname -m)
 VERSION=$(cat ./version)
-TARFILE="$VERSION.tar.gz"
+TARFILE="v""$VERSION.tar.gz"
 
 URL_SRC="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/refs/tags/$TARFILE"
 URL_SCRIPT1="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
@@ -49,7 +49,6 @@ chmod +x ./"$REC_PKGS"
 
 pacman -Syy --noconfirm \
 	base-devel \
-	sdl2-compat sdl2_gfx sdl2_image sdl2_net sdl2_ttf sdl2_mixer \
 	mesa-utils glew glu \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
@@ -60,7 +59,9 @@ pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-gtk3
 ################################################################################
 echo "→ Installing debloated packages..."
 
-./get-debloated-pkgs.sh --add-opengl --add-common --add-mesa --prefer-nano gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
+# ./get-debloated-pkgs.sh --add-opengl --add-common --add-mesa --prefer-nano gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
+
+./get-debloated-pkgs.sh --add-opengl --add-common --add-mesa --prefer-nano librsvg-mini ffmpeg-mini
 
 ################################################################################
 
