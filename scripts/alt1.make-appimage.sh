@@ -56,8 +56,8 @@ mkdir -vp AppDir/_details
 echo "$GH_SHA" > AppDir/_details/commit.txt
 echo "$(date)" > AppDir/_details/date.txt
 cat /etc/os-release > AppDir/_details/os.txt
-rpm -qa > AppDir/_details/packages.txt
-fastfetch|sed -e 's/Local IP.*//' -e 's/Locale.*//' -e 's/Battery.*//' -e 's/Disk.*//' -e 's/Swap.*//' > AppDir/_details/fetch.txt
+rpm -qa > AppDir/_details/system_packages.txt
+fastfetch|sed -e 's/Local IP.*//' -e 's/Locale.*//' -e 's/Battery.*//' -e 's/Disk.*//' -e 's/Swap.*//' > AppDir/_details/system_info.txt
 
 # Copy Internal scripts
 mkdir -vp AppDir/bin
@@ -69,3 +69,6 @@ chmod +x AppDir/bin/setup
 
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
+
+# Turn AppDir into SQUASHFS
+mksquashfs AppDir "$APPIMAGE_STEM".squashfs -comp xz
