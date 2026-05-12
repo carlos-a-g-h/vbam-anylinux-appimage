@@ -3,22 +3,23 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(cat ./version)
-TARFILE="v""$VERSION.tar.gz"
+VERSION="$(sed -n 1p sources.txt)"
+URL_SRC=$(awk "/https/ && /archive/ && /$VERSION/" sources.txt)
+URL_DPKG=$(awk "/https/ && /get-debloated-pkgs.sh/" sources.txt)
+URL_SHARUN=$(awk "/https/ && /quick-sharun.sh/" sources.txt)
 
-URL_SRC="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/refs/tags/$TARFILE"
-URL_SCRIPT1="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
-URL_SCRIPT2="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
+# Download source code
+wget "$URL_SRC" -O upstream.tar.gz
 
-################################################################################
-echo "→ Downloading everything"
+# Download debloated packages script
+FNAME="get-debloated-pkgs.sh"
+wget "$URL_DPKG" -O "$FNAME"
+chmod +x "$FNAME"
 
-wget "$URL_SRC"
-wget "$URL_SCRIPT1"
-wget "$URL_SCRIPT2"
-
-chmod +x *.sh
-ls -l *.sh
+# Download quick sharun script
+FNAME="quick-sharun.sh"
+wget "$URL_SHARUN" -O "$FNAME"
+chmod +x "$FNAME"
 
 ################################################################################
 echo "→ Decompressing $TARFILE"
