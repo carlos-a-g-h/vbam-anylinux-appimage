@@ -8,9 +8,6 @@ URL_SRC=$(awk "/https/ && /archive/ && /$VERSION/" sources.txt)
 URL_DPKG=$(awk "/https/ && /get-debloated-pkgs.sh/" sources.txt)
 URL_SHARUN=$(awk "/https/ && /quick-sharun.sh/" sources.txt)
 
-# Download source code
-wget "$URL_SRC" -O upstream.tar.gz
-
 # Download debloated packages script
 FNAME="get-debloated-pkgs.sh"
 wget "$URL_DPKG" -O "$FNAME"
@@ -20,6 +17,16 @@ chmod +x "$FNAME"
 FNAME="quick-sharun.sh"
 wget "$URL_SHARUN" -O "$FNAME"
 chmod +x "$FNAME"
+
+# Download source code
+wget "$URL_SRC" -O upstream.tar.gz
+tar -xf upstream.tar.gz
+mv "visualboyadvance-m-$VERSION" src
+
+
+
+
+
 
 ################################################################################
 echo "→ Decompressing $TARFILE"
