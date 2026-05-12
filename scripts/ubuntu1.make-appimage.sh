@@ -66,3 +66,6 @@ chmod +x AppDir/bin/setup
 
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
+
+# Turn AppDir into SQUASHFS
+mksquashfs AppDir "$APPIMAGE_STEM".squashfs -comp xz
