@@ -21,7 +21,7 @@ chmod +x "$FNAME"
 # Download source code
 wget "$URL_SRC" -O upstream.tar.gz
 tar -xf upstream.tar.gz
-mv "visualboyadvance-m-$VERSION" src
+mv "visualboyadvance-m-$VERSION" visualboyadvance-m.source
 
 ################################################################################
 echo "→ Installing the 'RECOMMENDED' packages..."
