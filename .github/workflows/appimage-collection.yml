@@ -52,6 +52,12 @@ jobs:
           name: AppImage-ubuntu1-${{ matrix.arch }}
           path: dist
 
+      - name: Upload artifact (AppDir)
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: AppDir-ubuntu1-${{ matrix.arch }}
+          path: VisualBoyAdvance-M_*.AppImage.squashfs
+
   build-alt1:
     name: "${{ matrix.name }} (${{ matrix.arch }})"
     runs-on: ${{ matrix.runs-on }}
@@ -100,6 +106,12 @@ jobs:
           name: AppImage-alt1-${{ matrix.arch }}
           path: dist
 
+      - name: Upload artifact (AppDir)
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: AppDir-alt1-${{ matrix.arch }}
+          path: VisualBoyAdvance-M_*.AppImage.squashfs
+
   release:
     if: ${{ github.ref_name == 'main' }}
 
@@ -120,11 +132,17 @@ jobs:
           pattern: AppImage-*
           merge-multiple: true
 
+      - name: Download artifact (AppDir)
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          pattern: AppDir-*
+          merge-multiple: true
+
       - name: Force specific version
         run: |
+          ls
           VERSION_COL="$(date +%Y.%m.%d)"
           sed -i "s/X-AppImage-Version=.*/X-AppImage-Version=$VERSION_COL/" ./appinfo
 
-      - name: Release AppImage
-        # uses: carlos-a-g-h/make-stable-appimage-release@version-override
+      - name: The Release
         uses: pkgforge-dev/make-stable-appimage-release@4ed3d48ccb065352b6e6c0db6d39885b201c54a0 #v1.1
