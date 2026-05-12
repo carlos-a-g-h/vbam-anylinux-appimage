@@ -138,7 +138,7 @@ jobs:
           pattern: AppDir-*
           merge-multiple: true
 
-      - name: Force specific version
+      - name: Force version based on the date
         run: |
           ls
           VERSION_COL="$(date +%Y.%m.%d)"
