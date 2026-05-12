@@ -23,28 +23,16 @@ wget "$URL_SRC" -O upstream.tar.gz
 tar -xf upstream.tar.gz
 mv "visualboyadvance-m-$VERSION" src
 
-
-
-
-
-
-################################################################################
-echo "→ Decompressing $TARFILE"
-
-PATH_SOURCECODE="visualboyadvance-m.source"
-PATH_SOURCECODE_DECOMP=$(tar -tzf "$TARFILE"|head -n1)
-
-ls -l "$TARFILE"
-tar -xf "$TARFILE"
-mv -v "$PATH_SOURCECODE_DECOMP" "$PATH_SOURCECODE"
-
 ################################################################################
 echo "→ Installing the 'RECOMMENDED' packages..."
 
-REC_PKGS="$PATH_SOURCECODE"/installdeps
-ls -l "$REC_PKGS"
-chmod +x ./"$REC_PKGS"
-./"$REC_PKGS"
+chmod -x src/installdeps
+bash src/installdeps
+
+# REC_PKGS="$PATH_SOURCECODE"/installdeps
+# ls -l "$REC_PKGS"
+# chmod +x ./"$REC_PKGS"
+# ./"$REC_PKGS"
 
 # wxwidgets-gtk3 is broken right now
 # https://gitlab.archlinux.org/archlinux/packaging/packages/wxwidgets/-/issues/7
