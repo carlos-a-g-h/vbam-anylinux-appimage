@@ -1,7 +1,10 @@
-
+2.2.3
 
 # Quick Sharun Script
 https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh
 
 # Debloated Packages Script
 https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh
+
+# VBA-M v2.2.3
+https://github.com/visualboyadvance-m/visualboyadvance-m/archive/refs/tags/v2.2.3.tar.gz
