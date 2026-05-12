@@ -12,7 +12,7 @@ echo "DOWNLOADING EVERYHTING"
 
 apt update
 
-apt install -yy git wget zsync patchelf xvfb binutils build-essential
+apt install -yy git wget zsync patchelf xvfb binutils build-essential squashfs-tools
 
 # URL_HELPERS="https://github.com/carlos-a-g-h/dependency-helper-scripts"
 URL_SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
