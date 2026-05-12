@@ -49,8 +49,8 @@ pacman -Syy --noconfirm \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
 
-pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-common/wxwidgets-common-3.2.6-1-x86_64.pkg.tar.zst"
-pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-gtk3/wxwidgets-gtk3-3.2.6-1-x86_64.pkg.tar.zst"
+# pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-common/wxwidgets-common-3.2.6-1-x86_64.pkg.tar.zst"
+# pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-gtk3/wxwidgets-gtk3-3.2.6-1-x86_64.pkg.tar.zst"
 
 ################################################################################
 echo "→ Installing debloated packages..."
