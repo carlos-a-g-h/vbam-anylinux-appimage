@@ -102,10 +102,18 @@ do
 	fi
 done
 
-echo "
-$MSG_NOT AppImage path: $(realpath -e "$URUNTIME")
-$MSG_NOT Mounted path: $(realpath -e "$APPDIR")
-"
+if [ -z "$APPDIR" ]
+then
+	"$MSG_NOT APPDIR env var not found!"
+	exit 1
+fi
+
+NO_AIMG=0
+if [ -z "$URUNTIME" ]
+then
+	"$MSG_NOT URUNTIME env var not found (?)"
+	NO_AIMG=1
+fi
 
 if ! [ $INSTALL -eq 1 ]
 then
@@ -136,7 +144,13 @@ then
 
 		fi
 
-		ln -vsf "$URUNTIME" "$BIN_LINK"
+		if [ $NO_AIMG -eq 1 ]
+		then
+			BIN_NAME=$(basename "$BIN_LINK")
+			URUNTIME="$APPDIR"/bin/"$BNAME"
+			echo "$MSG_NOT faking URUNTIME: $URUNTIME"
+		fi
+		ln -vrsf "$URUNTIME" "$BIN_LINK"
 
 	done
 
@@ -206,6 +220,12 @@ then
 
 			if [ -f "$MAIN_BIN" ]
 			then
+
+				if [ $NO_AIMG -eq 1 ]
+				then
+					URUNTIME="$MAIN_BIN"
+					echo "$MSG_NOT faking URUNTIME: $URUNTIME"
+				fi
 
 				DESTINATION=$(readlink "$MAIN_BIN")
 				if ! [ "$DESTINATION" == "$URUNTIME" ]
