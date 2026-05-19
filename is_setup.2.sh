@@ -45,10 +45,15 @@ MSG_NOT="[ ! ]"
 MSG_USE_FORCE="Run again with --force"
 
 INSTALL=0
+
 COPY_CONFIG=1
+
 MAKE_LINKS=1
+
 MAKE_DESKTOP=1
+
 OVERWRITE=0
+
 declare -a ARGUMENTS=(
 	"--install"
 	"--no-config"
@@ -111,7 +116,7 @@ fi
 NO_AIMG=0
 if [ -z "$URUNTIME" ]
 then
-	"$MSG_NOT URUNTIME env var not found (?)"
+	echo "$MSG_NOT URUNTIME env var not found (?)"
 	NO_AIMG=1
 fi
 
@@ -147,7 +152,7 @@ then
 		if [ $NO_AIMG -eq 1 ]
 		then
 			BIN_NAME=$(basename "$BIN_LINK")
-			URUNTIME="$APPDIR"/bin/"$BNAME"
+			URUNTIME="$APPDIR"/bin/"$BIN_NAME"
 			echo "$MSG_NOT faking URUNTIME: $URUNTIME"
 		fi
 		ln -vrsf "$URUNTIME" "$BIN_LINK"
@@ -247,6 +252,11 @@ then
 fi
 
 # Config
+if [[ $CONFIG_DIR == "/" ]]
+then
+	COPY_CONFIG=0
+	echo "$MSG_NOT Config ignored (no config?)"
+fi
 if [ $COPY_CONFIG -eq 1 ]
 then
 
