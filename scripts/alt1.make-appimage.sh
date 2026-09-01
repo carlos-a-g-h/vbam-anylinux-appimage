@@ -7,10 +7,10 @@ GH_SHA="$1"
 GH_SHA_SHORT="${GH_SHA:0:8}"
 
 ARCH=$(uname -m)
-VERSION="v$(rpm -q --queryformat %{VERSION} visualboyadvance-m)"
+VERSION="$(rpm -q --queryformat %{VERSION} visualboyadvance-m)"
 NAME="VisualBoyAdvance-M"
 
-APPIMAGE_STEM="$NAME"_"$VERSION"_"$GH_SHA_SHORT"_alt1_anylinux_"$ARCH"
+APPIMAGE_STEM="$NAME"_v"$VERSION"_"$GH_SHA_SHORT"_alt1_anylinux_"$ARCH"
 
 export ARCH VERSION
 # export ADD_HOOKS="self-updater.bg.hook"
@@ -55,8 +55,9 @@ cp -va _config AppDir/
 mkdir -vp AppDir/_details
 echo "$GH_SHA" > AppDir/_details/commit.txt
 echo "$(date)" > AppDir/_details/date.txt
-cat /etc/os-release > AppDir/_details/system.txt
-rpm -qa > AppDir/_details/packages.txt
+cat /etc/os-release > AppDir/_details/os.txt
+rpm -qa > AppDir/_details/system_packages.txt
+fastfetch|sed -e 's/Local IP.*//' -e 's/Locale.*//' -e 's/Battery.*//' -e 's/Disk.*//' -e 's/Swap.*//' > AppDir/_details/system_info.txt
 
 # Copy Internal scripts
 mkdir -vp AppDir/bin
@@ -68,3 +69,6 @@ chmod +x AppDir/bin/setup
 
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
+
+# Turn AppDir into SQUASHFS
+mksquashfs AppDir "$APPIMAGE_STEM".AppImage.squashfs -comp xz

@@ -1,0 +1,118 @@
+# Based on:
+# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=vbam
+
+pkgbase=vbam
+pkgname=(
+  vbam-sdl
+  vbam-wx
+)
+pkgver=2.2.3
+pkgrel=1
+pkgdesc='Nintendo GameBoy Advance emulator'
+arch=(x86_64)
+url='https://visualboyadvance-m.org'
+license=('GPL-2.0-only')
+depends=(
+  glu
+  libgl
+  libpng
+  sdl2
+  zlib
+  openal
+)
+makedepends=(
+  cmake
+  ffmpeg
+  git
+  libglvnd
+  ninja
+  wxwidgets-gtk3
+  zip
+)
+_pkgname=visualboyadvance-m
+source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}")
+
+prepare() {
+  cd ${_pkgname}
+}
+
+build() {
+  cmake -S ${_pkgname} -B build-sdl -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_SKIP_RPATH=TRUE \
+    -DENABLE_SDL=TRUE \
+    -DENABLE_WX=FALSE \
+    -DENABLE_LINK=TRUE \
+    -DBUILD_TESTING=OFF \
+    -DENABLE_ONLINEUPDATES=OFF \
+    -Wno-dev
+  cmake --build build-sdl
+
+  cmake -S ${_pkgname} -B build-wx -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_SKIP_RPATH=TRUE \
+    -DENABLE_SDL=FALSE \
+    -DENABLE_WX=TRUE \
+    -DENABLE_FFMPEG=TRUE \
+    -DENABLE_LINK=TRUE \
+    -DBUILD_TESTING=OFF \
+    -DENABLE_ONLINEUPDATES=OFF \
+    -Wno-dev
+  cmake --build build-wx
+}
+
+#build() {
+#  cmake -S ${_pkgname} -B build-sdl -G Ninja \
+#    -DCMAKE_BUILD_TYPE=Release \
+#    -DCMAKE_INSTALL_PREFIX=/usr \
+#    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+#    -DCMAKE_SKIP_RPATH=TRUE \
+#    -DENABLE_SDL=TRUE \
+#    -DENABLE_WX=FALSE \
+#    -DENABLE_LINK=FALSE \
+#    -DBUILD_TESTING=OFF \
+#    -Wno-dev
+#  cmake --build build-sdl
+#
+#  cmake -S ${_pkgname} -B build-wx -G Ninja \
+#    -DCMAKE_BUILD_TYPE=Release \
+#    -DCMAKE_INSTALL_PREFIX=/usr \
+#    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+#    -DCMAKE_SKIP_RPATH=TRUE \
+#    -DENABLE_SDL=FALSE \
+#    -DENABLE_WX=TRUE \
+#    -DENABLE_FFMPEG=TRUE \
+#    -DENABLE_LINK=FALSE \
+#    -DBUILD_TESTING=OFF \
+#    -Wno-dev
+#  cmake --build build-wx
+#}
+
+package_vbam-sdl() {
+  backup=(etc/vbam.cfg)
+  conflicts=(vbam-wx)
+
+  DESTDIR="${pkgdir}" cmake --install build-sdl
+}
+
+package_vbam-wx() {
+  depends+=(
+    glib2
+    gtk3
+    libavcodec.so
+    libavformat.so
+    libavutil.so
+    libswscale.so
+    openal
+    wxwidgets-gtk3
+    zip
+    libxss
+  )
+  conflicts=(vbam-sdl)
+
+  DESTDIR="${pkgdir}" cmake --install build-wx
+}

@@ -3,40 +3,36 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(cat ./version)
-TARFILE="$VERSION.tar.gz"
+VERSION="$(sed -n 1p sources.txt)"
+URL_SRC=$(awk "/https/ && /archive/ && /$VERSION/" sources.txt)
+URL_DPKG=$(awk "/https/ && /get-debloated-pkgs.sh/" sources.txt)
+URL_SHARUN=$(awk "/https/ && /quick-sharun.sh/" sources.txt)
 
-URL_SRC="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/refs/tags/$TARFILE"
-URL_SCRIPT1="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
-URL_SCRIPT2="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
+# Download debloated packages script
+FNAME="get-debloated-pkgs.sh"
+wget "$URL_DPKG" -O "$FNAME"
+chmod +x "$FNAME"
 
-################################################################################
-echo "→ Downloading everything"
+# Download quick sharun script
+FNAME="quick-sharun.sh"
+wget "$URL_SHARUN" -O "$FNAME"
+chmod +x "$FNAME"
 
-wget "$URL_SRC"
-wget "$URL_SCRIPT1"
-wget "$URL_SCRIPT2"
-
-chmod +x *.sh
-ls -l *.sh
-
-################################################################################
-echo "→ Decompressing $TARFILE"
-
-PATH_SOURCECODE="visualboyadvance-m.source"
-PATH_SOURCECODE_DECOMP=$(tar -tzf "$TARFILE"|head -n1)
-
-ls -l "$TARFILE"
-tar -xf "$TARFILE"
-mv -v "$PATH_SOURCECODE_DECOMP" "$PATH_SOURCECODE"
+# Download source code
+wget "$URL_SRC" -O upstream.tar.gz
+tar -xf upstream.tar.gz
+mv "visualboyadvance-m-$VERSION" visualboyadvance-m.source
 
 ################################################################################
 echo "→ Installing the 'RECOMMENDED' packages..."
 
-REC_PKGS="$PATH_SOURCECODE"/installdeps
-ls -l "$REC_PKGS"
-chmod +x ./"$REC_PKGS"
-./"$REC_PKGS"
+chmod -x src/installdeps
+bash src/installdeps
+
+# REC_PKGS="$PATH_SOURCECODE"/installdeps
+# ls -l "$REC_PKGS"
+# chmod +x ./"$REC_PKGS"
+# ./"$REC_PKGS"
 
 # wxwidgets-gtk3 is broken right now
 # https://gitlab.archlinux.org/archlinux/packaging/packages/wxwidgets/-/issues/7
@@ -49,18 +45,19 @@ chmod +x ./"$REC_PKGS"
 
 pacman -Syy --noconfirm \
 	base-devel \
-	sdl2-compat sdl2_gfx sdl2_image sdl2_net sdl2_ttf sdl2_mixer \
 	mesa-utils glew glu \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
 
-pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-common/wxwidgets-common-3.2.6-1-x86_64.pkg.tar.zst"
-pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-gtk3/wxwidgets-gtk3-3.2.6-1-x86_64.pkg.tar.zst"
+# pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-common/wxwidgets-common-3.2.6-1-x86_64.pkg.tar.zst"
+# pacman -U --noconfirm "https://archive.org/download/archlinux_pkg_wxwidgets-gtk3/wxwidgets-gtk3-3.2.6-1-x86_64.pkg.tar.zst"
 
 ################################################################################
 echo "→ Installing debloated packages..."
 
-./get-debloated-pkgs.sh --add-opengl --add-common --add-mesa --prefer-nano gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
+# ./get-debloated-pkgs.sh --add-opengl --add-common --add-mesa --prefer-nano gtk3-mini librsvg-mini gdk-pixbuf2-mini ffmpeg-mini
+
+./get-debloated-pkgs.sh --add-opengl --add-common --add-mesa --prefer-nano librsvg-mini ffmpeg-mini
 
 ################################################################################
 
